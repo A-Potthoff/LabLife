@@ -1,25 +1,34 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputDebugger : MonoBehaviour
+namespace Demostration
 {
-    [SerializeField] private InputActionReference moveAction;
-    [SerializeField] private InputActionReference interactAction;
-    
-    private void Awake()
+    public class InputDebugger : MonoBehaviour
     {
-        moveAction.action.Enable();
-        interactAction.action.Enable();
-        interactAction.action.performed += Interact;
-    }
+        [SerializeField] private InputActionReference moveAction;
+        [SerializeField] private InputActionReference interactAction;
+    
+        private void Awake()
+        {
+            moveAction.action.Enable();
+            interactAction.action.Enable();
+            interactAction.action.performed += Interact;
+        }
 
-    private void Interact(InputAction.CallbackContext ctx)
-    {
-        Debug.LogWarning("Hallo");
-    }
+        private static void Interact(InputAction.CallbackContext ctx)
+        {
+            Debug.LogWarning("Hallo");
+        }
     
-    private void Update()
-    {
-        Debug.Log(moveAction.action.ReadValue<Vector2>());
+        private void Update()
+        {
+            Debug.Log(moveAction.action.ReadValue<Vector2>());
+        
+            //Altes System
+            if (interactAction.action.WasPerformedThisFrame())
+            {
+                Interact(new InputAction.CallbackContext());
+            }
+        }
     }
 }
