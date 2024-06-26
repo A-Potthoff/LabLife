@@ -1,0 +1,4 @@
+repository "LabLife@AANDR3@cloud"
+  path "/"
+    br "/main"
+    co "/main"
