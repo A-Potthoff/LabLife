@@ -561,6 +561,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3582b9f056a29a6488d7bb24e63ce4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  object_specific_manager: {fileID: 0}
+  is_empty: 0
+  contains: 
+  culture_has_grown: 0
+  coverage: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,6 +1118,7 @@ GameObject:
   - component: {fileID: 2110031100}
   - component: {fileID: 2110031099}
   - component: {fileID: 2110031102}
+  - component: {fileID: 2110031103}
   m_Layer: 0
   m_Name: petri_dish
   m_TagString: Untagged
@@ -1242,6 +1248,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3582b9f056a29a6488d7bb24e63ce4c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  object_specific_manager: {fileID: 0}
+  is_empty: 0
+  contains: 
+  culture_has_grown: 0
+  coverage: 0
+--- !u!114 &2110031103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110031098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56cef2a1d75ded04ba4b7ed1c5279a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2140176040
