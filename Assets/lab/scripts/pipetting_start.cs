@@ -20,8 +20,12 @@ public class Object_specific_manager : MonoBehaviour
 
         if (sampleScript.content == Sample_script.Content.None)
         {
-            //SceneManager.LoadScene("pipetting_scene"); // Replace with your scene name
+            SceneManager.LoadScene("pipetting_scene"); // Replace with your scene name
             Debug.Log("Minigame started!");
+
+            // also set the player and sample to active
+            GameObject.Find("Player").SetActive(false);
+            GameObject.Find("Sample").SetActive(false);
         }
         else
         {

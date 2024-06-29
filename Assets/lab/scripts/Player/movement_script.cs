@@ -11,10 +11,21 @@ public class movement_script : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Vector2 movement;
+    private static movement_script instance;
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        // Make sure that the object is unique and not destroyed when loading a new scene
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void Update()

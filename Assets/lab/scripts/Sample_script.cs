@@ -20,8 +20,8 @@ public class Sample_script : MonoBehaviour{
     }
 
     [Header("Sample sprites")]
-    [SerializeField] public Sprite tube_empty;
-    [SerializeField] public Sprite tube_bacteria;
+    [SerializeField] public Sprite sprite_tube_empty;
+    [SerializeField] public Sprite sprite_tube_bacteria;
     //[SerializeField] public Sprite tube_empty;
 
     [Header("Sample Attributes")]
@@ -51,9 +51,9 @@ public class Sample_script : MonoBehaviour{
     public void bacteria_transferred()
     {
         // change the sprite of the object to the one with bacteria
-        if (tube_bacteria != null)
+        if (sprite_tube_bacteria != null)
         {
-            spriteRenderer.sprite = tube_bacteria;
+            spriteRenderer.sprite = sprite_tube_bacteria;
         }
         else
         {
@@ -65,7 +65,7 @@ public class Sample_script : MonoBehaviour{
 
 
 
-    private void Reset()
+    public void Reset()
     {
         // reset the attributes of the object
         //form = "tube";
@@ -74,6 +74,6 @@ public class Sample_script : MonoBehaviour{
         //isCentrifuged = false;
         //content = "None";
         //isConcentrated = false;
-        spriteRenderer.sprite = Resources.Load<Sprite>("Assets/lab/spirtes/sample/tube_empty.jpg");
+        spriteRenderer.sprite = sprite_tube_empty;
     }
 }

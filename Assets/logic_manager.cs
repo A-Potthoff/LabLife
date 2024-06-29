@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class logic_manager : MonoBehaviour
 {
     private static logic_manager instance;
     //get the sample object and the sample_script component
     [SerializeField] private GameObject Sample;
+    [SerializeField] private GameObject Player;
     private Sample_script sampleScript;
 
     void Start()
@@ -31,12 +33,37 @@ public class logic_manager : MonoBehaviour
         sampleScript.bacteria_transferred();
     }
 
-    //when t is pressed, call the step_transfer_bacteria function  ---- DEBUGGING PURPOSES
+    public void return_to_lab(bool success = true)
+    {
+        // check if the minigame was completed successfully
+        if (success)
+        {
+            SceneManager.LoadScene("main"); // Replace with your scene name
+            Debug.Log("Returned to lab");
+        }
+        else
+        {
+            // do something different
+        }
+        // also set the player and sample to active
+        Player.SetActive(true);
+        Sample.SetActive(true);
+    }
+    
     void Update()
     {
+        //when t is pressed, call the step_transfer_bacteria function  ---- DEBUGGING PURPOSES
         if (Input.GetKeyDown(KeyCode.T))
         {
             step_transfer_bacteria();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            sampleScript.Reset();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            return_to_lab();
         }
     }
 
