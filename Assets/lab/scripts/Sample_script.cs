@@ -2,26 +2,50 @@ using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class Sample_script : MonoBehaviour{
+    public enum Content
+    {
+        None,
+        DNA,
+        plasmids,
+        cells,
+        cells_plasmids,
+        transformed_cells
+    }
+
+    public enum Form
+    {
+        tube,
+        petri_dish,
+        box
+    }
 
     [Header("Sample sprites")]
     [SerializeField] public Sprite tube_empty;
     [SerializeField] public Sprite tube_bacteria;
     //[SerializeField] public Sprite tube_empty;
 
-
     [Header("Sample Attributes")]
-    [SerializeField] public string form; // e.g., "petri-dish", "tube"
-    [SerializeField] public bool hasBacteria;
-    [SerializeField] public bool isEmpty;
+    [SerializeField] public Form form;
     [SerializeField] public bool isCentrifuged;
-    [SerializeField] public string content; // e.g., "DNA", "plasmids", "cells", "cells+plasmids", "transformed cells", "None"
+    [SerializeField] public Content content;
     [SerializeField] public bool isConcentrated;
+
     private SpriteRenderer spriteRenderer;
+    private static Sample_script instance;
 
-
-    private void Start()
+    void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>(); //to change the sprites of 
+        // Make sure that the object is unique and not destroyed when loading a new scene
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+            spriteRenderer = GetComponent<SpriteRenderer>(); //to change the sprites of this object
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void bacteria_transferred()
@@ -35,9 +59,11 @@ public class Sample_script : MonoBehaviour{
         {
             Debug.LogError("Sprite not found in Resources folder.");
         }
-
-
     }
+
+
+
+
 
     private void Reset()
     {
@@ -50,5 +76,4 @@ public class Sample_script : MonoBehaviour{
         //isConcentrated = false;
         spriteRenderer.sprite = Resources.Load<Sprite>("Assets/lab/spirtes/sample/tube_empty.jpg");
     }
-
 }
