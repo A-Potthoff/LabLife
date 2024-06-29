@@ -52,7 +52,7 @@ public class logic_manager : MonoBehaviour
     
     void Update()
     {
-        //when t is pressed, call the step_transfer_bacteria function  ---- DEBUGGING PURPOSES
+        //when t, r, c is pressed  ---- DEBUGGING PURPOSES
         if (Input.GetKeyDown(KeyCode.T))
         {
             step_transfer_bacteria();

@@ -22,7 +22,7 @@ public class Sample_script : MonoBehaviour{
     [Header("Sample sprites")]
     [SerializeField] public Sprite sprite_tube_empty;
     [SerializeField] public Sprite sprite_tube_bacteria;
-    //[SerializeField] public Sprite tube_empty;
+    //[SerializeField] public Sprite tube_DNA;
 
     [Header("Sample Attributes")]
     [SerializeField] public Form form;
@@ -51,14 +51,7 @@ public class Sample_script : MonoBehaviour{
     public void bacteria_transferred()
     {
         // change the sprite of the object to the one with bacteria
-        if (sprite_tube_bacteria != null)
-        {
-            spriteRenderer.sprite = sprite_tube_bacteria;
-        }
-        else
-        {
-            Debug.LogError("Sprite not found in Resources folder.");
-        }
+        spriteRenderer.sprite = sprite_tube_bacteria;
     }
 
 
