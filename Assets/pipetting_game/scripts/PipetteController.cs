@@ -4,7 +4,7 @@ public class PipetteController : MonoBehaviour
 {
     private Vector3 offset;
 
-    void OnMouseDown()
+    void OnMouseDown() //necessary to calculate the offset
     {
         // Convert mouse position to world position
         Vector3 mousePosition = Input.mousePosition;
@@ -15,7 +15,7 @@ public class PipetteController : MonoBehaviour
         offset = transform.position - worldPosition;
     }
 
-    void OnMouseDrag()
+    void OnMouseDrag() // the actual movement of the pipette
     {
         // Convert mouse position to world position
         Vector3 mousePosition = Input.mousePosition;

@@ -64,7 +64,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 10.446381, y: -0.27350712}
+  m_Offset: {x: 13.686337, y: 0.03802681}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6214752, y: 12.454142}
+  m_Size: {x: 9.101389, y: 23.544765}
   m_EdgeRadius: 0
 --- !u!1 &1045322555684759992
 GameObject:
@@ -174,7 +174,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -9.7673235, y: 0.27988625}
+  m_Offset: {x: -14.054036, y: -0.5924101}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -185,7 +185,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.264063, y: 13.928577}
+  m_Size: {x: 10.837488, y: 23.598604}
   m_EdgeRadius: 0
 --- !u!1 &5367653393945309505
 GameObject:
@@ -259,7 +259,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 1714e2caceddda446aeb496bdd7efec9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -370,7 +370,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.21708202, y: -5.995241}
+  m_Offset: {x: 0.0052366257, y: -8.686898}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -381,7 +381,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 21.405725, y: 1.8735123}
+  m_Size: {x: 34.789238, y: 7.2568264}
   m_EdgeRadius: 0
 --- !u!1 &8041151629893857225
 GameObject:
@@ -447,7 +447,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.69364643, y: 6.108323}
+  m_Offset: {x: -0.4403391, y: 9.1364355}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -458,5 +458,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 21.725332, y: 2.3426704}
+  m_Size: {x: 33.16487, y: 8.398901}
   m_EdgeRadius: 0
