@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pipette
   - TubeOpening
+  - CentrifugeHolder
   layers:
   - Default
   - TransparentFX
