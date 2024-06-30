@@ -11,6 +11,8 @@ public class logic_manager : MonoBehaviour
     [SerializeField] private GameObject Sample;
     [SerializeField] private GameObject Player;
     private Sample_script sampleScript;
+    [SerializeField] private GameObject InstructorObject;
+    private Instructor Instructor;
 
     void Start()
     {
@@ -19,7 +21,12 @@ public class logic_manager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
+
             sampleScript = Sample.GetComponent<Sample_script>();
+            Instructor = InstructorObject.GetComponent<Instructor>();
+
+            // start the introduction of the instructor, this will be started only at the first start of the game
+            Instructor.StartIntroduction();
         }
         else
         {

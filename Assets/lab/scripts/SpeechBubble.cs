@@ -4,27 +4,21 @@ using UnityEngine;
 using TMPro;
 using UnityEditor.Tilemaps;
 
-public class speech_bubble : MonoBehaviour
+public class SpeechBubble : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textComponent;
+    private string[] _lines;
     private string[] lines;
     [SerializeField] private float text_speed;
     private int index;
-
+    private GameObject Instructor;
 
     //----------------- defining the lines of text ------------------------------------------------------------------
-    private void Awake()
-    {
-        lines = new string[3];
-        lines[0] = "Hello, I am a speech bubble";
-        lines[1] = "I am here to help you";
-        lines[2] = "I am a text box";
-    }
 
     void Start()
     {
         textComponent.text = string.Empty;
-        StartDialoge();
+        Instructor = GameObject.Find("Instructor");
     }
 
     void Update()
@@ -40,12 +34,12 @@ public class speech_bubble : MonoBehaviour
                 StopAllCoroutines();
                 textComponent.text = lines[index];
             }
-                
         }
     }
 
-    public void StartDialoge()
+    public void StartDialoge(string[] _lines)
     {
+        this.lines = _lines;
         index = 0;
         StartCoroutine(TypeLine());
     }
@@ -70,7 +64,9 @@ public class speech_bubble : MonoBehaviour
         else
         {
             textComponent.text = string.Empty;
-            gameObject.SetActive(false);
+            //deactivate the instructor when the dialoge is over
+            Instructor.SetActive(false);
         }
     }
+
 }
