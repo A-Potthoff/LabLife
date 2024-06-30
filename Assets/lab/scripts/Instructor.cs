@@ -4,8 +4,8 @@ public class Instructor : MonoBehaviour
 {
     private static Instructor instance;
     private string[] lines;
-    private SpeechBubble SpeechBubble;
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpeechBubble SpeechBubble;
 
     private void Start()
     {
@@ -13,8 +13,12 @@ public class Instructor : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
-            SpeechBubble = GameObject.Find("SpeechBubble").GetComponent<SpeechBubble>();
+            //SpeechBubble = GameObject.Find("SpeechBubble").GetComponent<SpeechBubble>(); //hopefully redundant now?!?!
             spriteRenderer = GetComponent<SpriteRenderer>();
+            if (SpeechBubble == null)
+            {
+                Debug.LogError("SPEECHBUBBLE NOT FOUND");
+            }
         }
         else
         {
