@@ -51,12 +51,10 @@ public class PipetteController : MonoBehaviour
             currentTube = other.GetComponentInParent<TubeController>();
         }
     }
-
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("TubeOpening"))
         {
-            //Debug.Log("Pipette left the tube");
             currentTube = null;
         }
     }
@@ -65,11 +63,11 @@ public class PipetteController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Space key was pressed");
             if (fill != 0)
             {
                 if (currentTube != null)
                 {
+                    Debug.Log("pipette emptied");
                     // Drop the liquid into the tube and empty the pipette
                     fill = 0;
                     currentTube.fill_tube();
@@ -78,10 +76,9 @@ public class PipetteController : MonoBehaviour
             }
             else if (fill == 0)
             {
-                Debug.Log("Pipette is not filled");
                 if (currentTube != null && currentTube.fill != 0)
                 {
-                    Debug.Log("Tube is filled");
+                    Debug.Log("pipette filled");
                     // Fill the pipette from the tube and empty the tube
                     fill = 1;
                     currentTube.empty_tube();
