@@ -22,7 +22,7 @@ public class Instructor : MonoBehaviour
         }
     }
 
-    public void StartIntroduction()
+    /*public void StartIntroduction()
     {
         lines = new string[7];
         lines[0] = "Hey there!\nWelcome to our lab!\n\n(press 'SPACE' to continue)";
@@ -37,4 +37,16 @@ public class Instructor : MonoBehaviour
 
         SpeechBubble.StartDialoge(lines);
     }
+    */
+
+    public void StartIntroduction()
+    {
+        lines = new string[1];
+        lines[0] = "Hey there!\nbla bla";
+
+        Debug.Log("Instructor started");
+
+        SpeechBubble.StartDialoge(lines);
+    }
 }
+
