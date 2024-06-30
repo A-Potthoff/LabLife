@@ -12,25 +12,25 @@ public class TubeController : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        //detectionCollider = GetComponent<BoxCollider>();
+        update_sprite();
     }
-
-    // Example of handling detection events
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("Something entered the tube");
-        if (other.CompareTag("Pipette"))
-        {
-            Debug.Log("Pipette detected above the tube");
-        }
-    }
-
 
     public void update_sprite()
     {
         if (fill == 1) { spriteRenderer.sprite = sprite_tube_bacteria; }
         else { spriteRenderer.sprite = sprite_tube_empty; }
+    }
+
+    public void fill_tube()
+    {
+        fill = 1;
+        update_sprite();
+    }
+
+    public void empty_tube()
+    {
+        fill = 0;
+        update_sprite();
     }
 }
 
