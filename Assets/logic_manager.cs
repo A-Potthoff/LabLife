@@ -16,7 +16,7 @@ public class logic_manager : MonoBehaviour
 
     void Start()
     {
-        // Make sure that the object is unique and not destroyed when loading a new scene
+        // Make sure that the object is UNIQUE and not destroyed when loading a new scene
         if (instance == null)
         {
             instance = this;
@@ -26,7 +26,8 @@ public class logic_manager : MonoBehaviour
             Instructor = InstructorObject.GetComponent<Instructor>();
 
             // start the introduction of the instructor, this will be started only at the first start of the game
-            Instructor.StartIntroduction();
+            Instructor.StartIntroduction();  // UNCOMMENT IN FINAL VERSION
+            //InstructorObject.SetActive(false); // COMMENT OUT IN FINAL VERSION
         }
         else
         {
@@ -71,6 +72,11 @@ public class logic_manager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             return_to_lab();
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            InstructorObject.SetActive(true);
+            Instructor.StartIntroduction();
         }
     }
 

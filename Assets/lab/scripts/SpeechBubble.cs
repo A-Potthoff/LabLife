@@ -6,6 +6,7 @@ using UnityEditor.Tilemaps;
 
 public class SpeechBubble : MonoBehaviour
 {
+    private static Instructor instance; 
     [SerializeField] private TextMeshProUGUI textComponent;
     private string[] _lines;
     private string[] lines;
@@ -25,14 +26,14 @@ public class SpeechBubble : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (textComponent.text == lines[index])
-            {
-                NextLine();
-            }
-            else
+            if (textComponent.text != lines[index])
             {
                 StopAllCoroutines();
                 textComponent.text = lines[index];
+            }
+            else
+            {
+                NextLine();
             }
         }
     }
@@ -64,7 +65,7 @@ public class SpeechBubble : MonoBehaviour
         else
         {
             textComponent.text = string.Empty;
-            //deactivate the instructor when the dialoge is over
+            //deactivate the speech bubble when the dialoge is over
             Instructor.SetActive(false);
         }
     }
