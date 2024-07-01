@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeightController : MonoBehaviour
@@ -52,10 +50,11 @@ public class WeightController : MonoBehaviour
         }
     }
     */
+    /*
 
     private bool isDragging = false;
     private Vector3 offset;
-    private Transform currentHolder = null;
+    [SerializeField] private Transform currentHolder = null;
 
     void Update()
     {
@@ -66,17 +65,23 @@ public class WeightController : MonoBehaviour
             {
                 isDragging = true;
                 offset = transform.position - mousePos;
+                Debug.Log("Dragging started");
             }
         }
 
-        if (Input.GetMouseButtonUp(0) && isDragging)
+        if (Input.GetMouseButtonUp(0))
         {
             isDragging = false;
             if (currentHolder != null)
             {
-                // Snap to the holder
+                // Snap to the holder's position
                 transform.position = currentHolder.position;
                 transform.SetParent(currentHolder);
+                Debug.Log("Snapped to holder: " + currentHolder.name);
+            }
+            else
+            {
+                Debug.Log("No holder to snap to");
             }
         }
 
@@ -87,24 +92,96 @@ public class WeightController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnChildTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Holder"))
+        Debug.Log("OnTriggerEnter2D");
+        if (other.CompareTag("CentrifugeHolder"))
         {
             currentHolder = other.transform;
+            Debug.Log("Entered holder: " + currentHolder.name);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    public void OnChildTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Holder"))
+        Debug.Log("OnTriggerExit2D");
+        if (other.CompareTag("CentrifugeHolder"))
         {
             if (currentHolder == other.transform)
             {
+                Debug.Log("Exited holder: " + currentHolder.name);
                 currentHolder = null;
             }
         }
+    }*/
+
+
+    private Vector3 offset;
+    [SerializeField] private Transform CurrentHolder = null;
+
+    private SpriteRenderer spriteRenderer;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    //-----------------------------------------handling the movement of the pipette by the mouse ------------------------------------
 
+    void OnMouseDown() //necessary to calculate the offset
+    {
+        // Convert mouse position to world position
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = Camera.main.WorldToScreenPoint(transform.position).z;
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        // Calculate the offset between the mouse position and the pipette's position
+        offset = transform.position - worldPosition;
+    }
+
+    void OnMouseUp() //necessary to calculate the offset
+    {
+        if (CurrentHolder != null)
+        {
+            // Snap to the holder's position
+            transform.position = CurrentHolder.position;
+            transform.SetParent(CurrentHolder);
+            Debug.Log("Snapped to holder: " + CurrentHolder.name);
+        }
+        else
+        {
+            transform.SetParent(null);
+        }
+    }
+
+    void OnMouseDrag() // the actual movement of the pipette
+    {
+        // Convert mouse position to world position
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = Camera.main.WorldToScreenPoint(transform.position).z;
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        // Apply the offset to keep the pipette from jumping to the mouse position
+        transform.position = worldPosition + offset;
+    }
+
+    //-----------------------------handling the pipette filling and emptying, and interaction with the tube ------------------------
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Trigger entered");
+        if (other.CompareTag("CentrifugeHolder"))
+        {
+            Debug.Log("Holder detected!");
+            CurrentHolder = other.transform;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("CentrifugeHolder"))
+        {
+            CurrentHolder = null;
+        }
+    }
 }
