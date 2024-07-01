@@ -37,7 +37,7 @@ public class CentrifugeStation : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Object clicked");
+        //Debug.Log("Object clicked");
         if (isPlayerInContact)
         {
             Start_minigame();
