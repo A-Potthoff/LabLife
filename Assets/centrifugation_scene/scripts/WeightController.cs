@@ -4,8 +4,8 @@ public class WeightController : MonoBehaviour
 {
     private Vector3 offset;
     [SerializeField] private Transform CurrentHolder = null;
-    private Holder CurrentHolderScript = null;
-    private Holder PreviousHolderScript = null;
+    [SerializeField] private Holder CurrentHolderScript = null;
+    [SerializeField] public bool IsInHolder = false;
     private Collider2D holderCollider;
 
     private SpriteRenderer spriteRenderer;
@@ -19,12 +19,6 @@ public class WeightController : MonoBehaviour
 
     void OnMouseDown() //necessary to calculate the offset
     {
-        // Mark the current holder as empty when the tube is picked up
-        if (CurrentHolderScript != null)
-        {
-            CurrentHolderScript.filled = false;
-        }
-
         // Convert mouse position to world position
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = Camera.main.WorldToScreenPoint(transform.position).z;
@@ -33,8 +27,11 @@ public class WeightController : MonoBehaviour
         // Calculate the offset between the mouse position and the pipette's position
         offset = transform.position - worldPosition;
 
-        // Track the previous holder
-        PreviousHolderScript = CurrentHolderScript;
+        // Mark the current holder as empty because the tube is picked up now
+        if (IsInHolder)
+        {
+            CurrentHolderScript.filled = false;
+        }
     }
 
     void OnMouseUp()
@@ -58,8 +55,7 @@ public class WeightController : MonoBehaviour
             // Set the current holder to filled
             CurrentHolderScript.filled = true;
 
-            // Clear the previous holder reference
-            PreviousHolderScript = null;
+            IsInHolder = true;
         }
         else
         {
@@ -67,11 +63,7 @@ public class WeightController : MonoBehaviour
             CurrentHolder = null;
             transform.rotation = Quaternion.identity;
 
-            // If there was a previous holder, make sure to mark it as empty
-            if (PreviousHolderScript != null)
-            {
-                PreviousHolderScript.filled = false;
-            }
+            IsInHolder = false;
         }
     }
 
