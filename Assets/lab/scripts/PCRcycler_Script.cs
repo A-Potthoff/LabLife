@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CentrifugeStation : MonoBehaviour
+public class PCRcycler_Script : MonoBehaviour
 {
     private Vector3 originalScale;
     private Vector3 enlargedScale;
@@ -40,22 +40,19 @@ public class CentrifugeStation : MonoBehaviour
         //Debug.Log("Object clicked");
         if (isPlayerInContact)
         {
-            Start_minigame();
+            Start_PCR();
         }
     }
 
-    public void Start_minigame()
+    public void Start_PCR()
     {
         //check if all the necessary conditions are met to start the minigame
 
         if (sampleScript.content == Sample_script.Content.None)
         {
-            SceneManager.LoadScene("centrifugation_scene"); // Replace with your scene name
-            Debug.Log("Centrifugation started!");
 
-            // also set the player and sample to active
-            GameObject.Find("Player").SetActive(false);
-            GameObject.Find("Sample").SetActive(false);
+            Debug.Log("PCR cycler started!");
+
         }
         else
         {
