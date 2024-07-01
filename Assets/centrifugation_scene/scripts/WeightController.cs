@@ -4,6 +4,7 @@ public class WeightController : MonoBehaviour
 {
     private Vector3 offset;
     [SerializeField] private Transform CurrentHolder = null;
+    private Holder HolderScript = null;
 
     private SpriteRenderer spriteRenderer;
 
@@ -27,9 +28,15 @@ public class WeightController : MonoBehaviour
 
     void OnMouseUp()
     {
+        if (HolderScript != null) // if the tube was previously in a holder
+        {
+            HolderScript.filled = false; // set the previous holder to empty
+        }
+        
         // Check if mouse is over a holder collider
         Collider2D holderCollider = GetHolderUnderMouse();
-        if (holderCollider != null)
+        HolderScript = holderCollider?.GetComponent<Holder>(); // Get the Holder script component of the holder collider
+        if (holderCollider != null && !HolderScript.filled)
         {
             // Snap to the holder's position
             CurrentHolder = holderCollider.transform;
@@ -40,6 +47,9 @@ public class WeightController : MonoBehaviour
 
             transform.SetParent(CurrentHolder);
             Debug.Log("Weight Snapped to holder: " + CurrentHolder.name);
+
+            // set the holder to filled
+            HolderScript.filled = true;
         }
         else
         {

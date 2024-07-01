@@ -2,5 +2,10 @@ using UnityEngine;
 
 public class Holder : MonoBehaviour
 {
-    public bool filled = false;
+    [SerializeField] public bool filled;
+
+    private void Start()
+    {
+        filled = false;
+    }
 }
