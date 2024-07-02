@@ -8,10 +8,10 @@ public class logic_manager : MonoBehaviour
 {
     private static logic_manager instance;
     //get the sample object and the sample_script component
-    [SerializeField] private GameObject Sample;
-    [SerializeField] private GameObject Player;
-    private Sample_script sampleScript;
+    [SerializeField] private GameObject SampleObject;
+    [SerializeField] private GameObject PlayerObject;
     [SerializeField] private GameObject InstructorObject;
+    private Sample_script sampleScript;
     private Instructor Instructor;
 
     void Start()
@@ -22,8 +22,8 @@ public class logic_manager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
 
-            sampleScript = Sample.GetComponent<Sample_script>();
-            Instructor = InstructorObject.GetComponent<Instructor>();
+            sampleScript = SampleObject.GetComponent<Sample_script>();
+            Instructor = Instructor.Instance;
 
             // start the introduction of the instructor, this will be started only at the first start of the game
             Instructor.StartIntroduction();  // UNCOMMENT IN FINAL VERSION
@@ -54,8 +54,8 @@ public class logic_manager : MonoBehaviour
             // do something different
         }
         // also set the player and sample to active
-        Player.SetActive(true);
-        Sample.SetActive(true);
+        PlayerObject.SetActive(true);
+        SampleObject.SetActive(true);
     }
     
     void Update()

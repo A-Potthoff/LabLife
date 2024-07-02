@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/centrifugation_scene/centrifugation_scene.unity
     guid: 0c1c6e5b0b762a348993ad0a502f8428
+  - enabled: 1
+    path: Assets/Easteregg/easteregg.unity
+    guid: be516897031ad42439d44c07d7ea2052
   m_configObjects: {}

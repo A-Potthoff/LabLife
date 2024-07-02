@@ -31,21 +31,38 @@ public class Sample_script : MonoBehaviour{
     [SerializeField] public bool isConcentrated;
 
     private SpriteRenderer spriteRenderer;
-    private static Sample_script instance;
+    public static Sample_script Instance;
 
-    void Start()
+    void Awake()
     {
         // Make sure that the object is unique and not destroyed when loading a new scene
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(this.gameObject);
-            spriteRenderer = GetComponent<SpriteRenderer>(); //to change the sprites of this object
         }
         else
         {
             Destroy(this.gameObject);
         }
+    }
+
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>(); //to change the sprites of this object
+    }
+
+    public void Pickup(Transform carryPosition)
+    {
+        transform.SetParent(carryPosition);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+    }
+
+    public void Drop()
+    {
+        transform.SetParent(null);
+        transform.position += new Vector3(1, 0, 0); //pop the sample a bit to the right
     }
 
     public void bacteria_transferred()
