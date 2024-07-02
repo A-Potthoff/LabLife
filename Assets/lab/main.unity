@@ -441,8 +441,8 @@ Transform:
   m_GameObject: {fileID: 103643189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.38, y: 1.12, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: -0.465, y: 1.145, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 83063988}
@@ -492,18 +492,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.1048551}
+  m_Offset: {x: -0.7022953, y: -1.1550198}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15.57, y: 12.18}
+    oldSize: {x: 23.122978, y: 18.81}
     newSize: {x: 15.57, y: 12.18}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15.57, y: 24.360256}
+  m_Size: {x: 24.800167, y: 36.700596}
   m_EdgeRadius: 0
 --- !u!212 &103643193
 SpriteRenderer:
@@ -546,7 +546,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ed674da6dcadb3747b39013e3486465c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7fa546314875e114392a5ad2b5fcdeed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1829,7 +1829,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.49, y: -3.18, z: -0.032847203}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1875,7 +1875,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 75cc0a67ba375c14eb4c1390ec272913, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a07c6ad70b02434ab8b51a0de126856, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1933,8 +1933,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb1563412419e54cabaec8907f8cdb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite_tube_empty: {fileID: 21300000, guid: 75cc0a67ba375c14eb4c1390ec272913, type: 3}
-  sprite_tube_bacteria: {fileID: 21300000, guid: 1a4e90a5f0ef7164ba376d554761f55d, type: 3}
+  sprite_tube_empty: {fileID: 21300000, guid: 5a07c6ad70b02434ab8b51a0de126856, type: 3}
+  sprite_tube_bacteria: {fileID: 21300000, guid: a49afa5e8b8113043882577a82d62986, type: 3}
   form: 0
   isCentrifuged: 0
   content: 0
