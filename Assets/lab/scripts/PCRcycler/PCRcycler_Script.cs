@@ -8,11 +8,15 @@ public class PCRcycler_Script : MonoBehaviour
     private bool isPlayerInContact = false;
     [SerializeField] private GameObject Sample;
     private Sample_script sampleScript;
+    [SerializeField] private GameObject LoadingBar;
+    private LoadingBar_Script loadingBarScript;
 
     private void Start()
     {
         originalScale = transform.localScale;
         enlargedScale = originalScale * 1.1f; // Increase scale by 10%
+
+        loadingBarScript = LoadingBar.GetComponent<LoadingBar_Script>();
 
         sampleScript = Sample.GetComponent<Sample_script>();
     }
@@ -52,6 +56,12 @@ public class PCRcycler_Script : MonoBehaviour
         {
 
             Debug.Log("PCR cycler started!");
+            // Starting LoadingBar
+            LoadingBar.SetActive(true); // Show the loading bar
+            float duration = 7f;
+            loadingBarScript.Loading(duration);
+
+
 
         }
         else
@@ -59,5 +69,6 @@ public class PCRcycler_Script : MonoBehaviour
             Debug.Log("Conditions not met to start the minigame.");
             //call the help (Instructor!)
         }
+
     }
 }
