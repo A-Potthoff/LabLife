@@ -1,15 +1,20 @@
 using System.Data.SqlTypes;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PipetteController : MonoBehaviour
 {
     private Vector3 offset;
-    public float fill; //purposefully left as float to allow continuous filling of the tube in the future
+    [SerializeField] public float fill; //purposefully left as float to allow continuous filling of the tube in the future
     private TubeController currentTube = null;
 
     private SpriteRenderer spriteRenderer;
     [SerializeField] public Sprite pipette_empty;
     [SerializeField] public Sprite pipette_filled;
+
+    //private Image tubeImage;
+    //private Image currentTube_filled;
+    //private TubeFilling_Script TubeFilling_Script;
 
     private void Start()
     {
@@ -48,14 +53,28 @@ public class PipetteController : MonoBehaviour
         if (other.CompareTag("TubeOpening")) 
         {
             Debug.Log("Pipette is above a tube");
-            currentTube = other.GetComponentInParent<TubeController>();
+            currentTube = other.GetComponent<TubeController>();
+            /*TubeFilling_Script = other.GetComponent<TubeFilling_Script>();
+            tubeImage = other.GetComponentInChildren<Image>();
+
+            if (tubeImage != null)
+            {
+                currentTube_filled = tubeImage;
+            }*/
         }
     }
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("TubeOpening"))
         {
+            Debug.Log("Pipette is out of tube");
             currentTube = null;
+            /*if (tubeImage != null && currentTube_filled == tubeImage)
+            {
+                currentTube_filled= null;
+                TubeFilling_Script.StopFilling();
+                TubeFilling_Script = null;
+            }*/
         }
     }
 
@@ -87,6 +106,23 @@ public class PipetteController : MonoBehaviour
             }
         }
     }
+
+    /*void Update()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space is pressed");
+            TubeFilling_Script.StartFilling(currentTube_filled);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Debug.Log("Space is unpressed");
+            TubeFilling_Script.StopFilling();
+        }
+        
+    }*/
 
     private void update_sprite()
     {
