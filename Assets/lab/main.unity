@@ -1008,7 +1008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 2085394550}
-  text_speed: 0.01
+  text_speed: 0.2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

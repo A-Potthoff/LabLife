@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class Instructor : MonoBehaviour
 {
-    private static Instructor instance;
+    public static Instructor Instance;
     private string[] lines;
     private SpriteRenderer spriteRenderer;
     [SerializeField] private SpeechBubble SpeechBubble;
 
     private void Start()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(this.gameObject);
             //SpeechBubble = GameObject.Find("SpeechBubble").GetComponent<SpeechBubble>(); //hopefully redundant now?!?!
             spriteRenderer = GetComponent<SpriteRenderer>();
@@ -25,8 +25,7 @@ public class Instructor : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    /*public void StartIntroduction()
+    public void StartIntroduction()
     {
         lines = new string[7];
         lines[0] = "Hey there!\nWelcome to our lab!\n\n(press 'SPACE' to continue)";
@@ -41,12 +40,36 @@ public class Instructor : MonoBehaviour
 
         SpeechBubble.StartDialoge(lines);
     }
-    */
-
+    
+    /*
     public void StartIntroduction()
     {
         lines = new string[1];
         lines[0] = "Hey there!\nbla bla";
+
+        Debug.Log("Instructor started");
+
+        SpeechBubble.StartDialoge(lines);
+    }
+    */
+
+    public void IntroCentrifuge()
+    {
+        lines = new string[3];
+        lines[0] = "This is the centrifuge. It is used to separate the different components of a liquid by spinning it at high speed.";
+        lines[1] = "The heavier components are pushed to the bottom of the tube, while the lighter components stay on top.";
+        lines[2] = "Be careful when using it. If the centrifuge is not balanced, an imbalance occurs and the centrifuge breaks down.";
+
+        Debug.Log("Instructor started");
+
+        SpeechBubble.StartDialoge(lines);
+    }
+
+    public void FailCentrifuge()
+    {
+        lines = new string[4];
+        lines[0] = "BE CAREFUL! You have to balance the centrifuge first before starting it.";
+        lines[1] = "Lab equipment can be extremely expensive so we dont want to break it!";
 
         Debug.Log("Instructor started");
 

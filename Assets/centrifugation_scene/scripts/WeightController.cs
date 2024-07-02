@@ -55,6 +55,9 @@ public class WeightController : MonoBehaviour
             // Set the current holder to filled
             CurrentHolderScript.filled = true;
 
+            // update the centrifuges balance
+            CurrentHolderScript.GetComponentInParent<CentrifugeController>().CheckIfBalanced();
+
             IsInHolder = true;
         }
         else
