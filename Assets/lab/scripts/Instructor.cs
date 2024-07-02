@@ -55,10 +55,11 @@ public class Instructor : MonoBehaviour
 
     public void IntroCentrifuge()
     {
-        lines = new string[3];
+        lines = new string[4];
         lines[0] = "This is the centrifuge. It is used to separate the different components of a liquid by spinning it at high speed.";
-        lines[1] = "The heavier components are pushed to the bottom of the tube, while the lighter components stay on top.";
+        lines[1] = "The heavier components (like cell debrid) are pushed to the bottom of the tube, while the lighter components (DNA) stay on top.";
         lines[2] = "Be careful when using it. If the centrifuge is not balanced, an imbalance occurs and the centrifuge breaks down.";
+        lines[3] = "Once you have balanced the centrifuge, you can start it by pressing 'E'.";
 
         Debug.Log("Instructor started");
 
@@ -67,7 +68,7 @@ public class Instructor : MonoBehaviour
 
     public void FailCentrifuge()
     {
-        lines = new string[4];
+        lines = new string[2];
         lines[0] = "BE CAREFUL! You have to balance the centrifuge first before starting it.";
         lines[1] = "Lab equipment can be extremely expensive so we dont want to break it!";
 

@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEditor.Tilemaps;
+using System.Collections;
 
 public class SpeechBubble : MonoBehaviour
 {
-    private static Instructor instance; 
+    private static Instructor instance;
     [SerializeField] private TextMeshProUGUI textComponent;
     private string[] _lines;
     private string[] lines;
     [SerializeField] private float text_speed;
     private int index;
     private GameObject Instructor;
+    private Coroutine typingCoroutine;
 
     //----------------- defining the lines of text ------------------------------------------------------------------
 
@@ -42,15 +41,28 @@ public class SpeechBubble : MonoBehaviour
     {
         this.lines = _lines;
         index = 0;
+
+        // Stop any existing typing coroutine before starting a new one
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
         //Debugging Purposes only
-        Debug.Log(lines[0]);
-        StartCoroutine(TypeLine());
+        Debug.Log("First line:" + this.lines[0]);
+        Debug.Log("Last  line:" + this.lines[this.lines.Length - 1]);
+
+        // Start the typing coroutine
+        typingCoroutine = StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine() // types the text char by char
     {
+        textComponent.text = string.Empty;
+
         foreach (char c in this.lines[index].ToCharArray())
         {
+            Debug.Log(text_speed);
             textComponent.text += c;
             yield return new WaitForSeconds(text_speed);
         }
@@ -62,7 +74,14 @@ public class SpeechBubble : MonoBehaviour
         {
             index++;
             textComponent.text = string.Empty;
-            StartCoroutine(TypeLine());
+
+            // Stop any existing typing coroutine before starting a new one
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine);
+            }
+
+            typingCoroutine = StartCoroutine(TypeLine());
         }
         else
         {
@@ -71,5 +90,4 @@ public class SpeechBubble : MonoBehaviour
             Instructor.SetActive(false);
         }
     }
-
 }
