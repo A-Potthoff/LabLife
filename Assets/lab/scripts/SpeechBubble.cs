@@ -42,12 +42,14 @@ public class SpeechBubble : MonoBehaviour
     {
         this.lines = _lines;
         index = 0;
+        //Debugging Purposes only
+        Debug.Log(lines[0]);
         StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine() // types the text char by char
     {
-        foreach (char c in lines[index].ToCharArray())
+        foreach (char c in this.lines[index].ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(text_speed);
@@ -56,7 +58,7 @@ public class SpeechBubble : MonoBehaviour
 
     void NextLine()
     {
-        if (index < lines.Length - 1)
+        if (index < this.lines.Length - 1)
         {
             index++;
             textComponent.text = string.Empty;
