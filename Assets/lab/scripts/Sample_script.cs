@@ -48,6 +48,19 @@ public class Sample_script : MonoBehaviour{
         }
     }
 
+    public void Pickup(Transform carryPosition)
+    {
+        transform.SetParent(carryPosition);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+    }
+
+    public void Drop()
+    {
+        transform.SetParent(null);
+        transform.position += new Vector3(1, 0, 0); //pop the sample a bit to the right
+    }
+
     public void bacteria_transferred()
     {
         // change the sprite of the object to the one with bacteria

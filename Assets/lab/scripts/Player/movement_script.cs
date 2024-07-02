@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class movement_script : MonoBehaviour
 {
     [SerializeField] private float speed;
-    //[SerializeField] private Sprite sideSprite;
-    //[SerializeField] private Sprite topSprite;
-    //[SerializeField] private Sprite downSprite;
+    [SerializeField] private Transform carryPosition; // The position where the Sample will be carried
     private Vector3 originalScale;
 
     private SpriteRenderer spriteRenderer;
     private Vector2 movement;
     private static movement_script instance;
+    [SerializeField] private GameObject Sample;
+    private Sample_script sampleScript;
+    private bool isCarrying = false;
+    private bool SampleDetected = false;
 
     private void Start()
     {
@@ -23,6 +27,7 @@ public class movement_script : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             spriteRenderer = GetComponent<SpriteRenderer>();
             originalScale = transform.localScale;
+            sampleScript = Sample.GetComponent<Sample_script>();
         }
         else
         {
@@ -41,7 +46,48 @@ public class movement_script : MonoBehaviour
 
         // Change sprite based on movement direction
         UpdateSprite();
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (SampleDetected)
+            {
+                Debug.Log("Picking up sample");
+                sampleScript.Pickup(carryPosition);
+                isCarrying = true;
+            }
+            else if(isCarrying)
+            {
+                Debug.Log("Dropping sample");
+                sampleScript.Drop();
+                isCarrying = false;
+            }
+            else
+            {
+                Debug.Log("No sample detected");
+            }
+        }
     }
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Sample"))
+        {
+            SampleDetected = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Sample"))
+        {
+            SampleDetected = false;
+        }
+    }
+
+
+
 
     private void UpdateSprite()
     {
