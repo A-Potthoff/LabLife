@@ -62,7 +62,6 @@ public class SpeechBubble : MonoBehaviour
 
         foreach (char c in this.lines[index].ToCharArray())
         {
-            Debug.Log(text_speed);
             textComponent.text += c;
             yield return new WaitForSeconds(text_speed);
         }

@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.PackageManager.UI;
+
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class movement_script : MonoBehaviour
 {
@@ -12,27 +9,31 @@ public class movement_script : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Vector2 movement;
-    private static movement_script instance;
+    public static movement_script Instance;
     [SerializeField] private GameObject Sample;
     private Sample_script sampleScript;
-    private bool isCarrying = false;
+    public bool isCarrying = false;
     private bool SampleDetected = false;
 
-    private void Start()
+    private void Awake()
     {
         // Make sure that the object is unique and not destroyed when loading a new scene
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(this.gameObject);
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            originalScale = transform.localScale;
-            sampleScript = Sample.GetComponent<Sample_script>();
         }
         else
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalScale = transform.localScale;
+        sampleScript = Sample.GetComponent<Sample_script>();
     }
 
     private void Update()

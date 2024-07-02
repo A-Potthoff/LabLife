@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class Instructor : MonoBehaviour
@@ -7,18 +8,12 @@ public class Instructor : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] private SpeechBubble SpeechBubble;
 
-    private void Start()
+    void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
-            //SpeechBubble = GameObject.Find("SpeechBubble").GetComponent<SpeechBubble>(); //hopefully redundant now?!?!
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            if (SpeechBubble == null)
-            {
-                Debug.LogError("SPEECHBUBBLE NOT FOUND");
-            }
         }
         else
         {
@@ -26,11 +21,20 @@ public class Instructor : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (SpeechBubble == null) //defined using SerializeField
+        {
+            Debug.LogError("SPEECHBUBBLE NOT FOUND");
+        }
+    }
+
     /*
     public void StartIntroduction()
     {
         lines = new string[9];
-        lines[0] = "Hey there!\nWelcome to our lab!\n\n[press 'SPACE' to continue]";
+        lines[0] = "Hey there!\nI'm Eni and I am happy to welcome you to our lab!\n\n[press 'SPACE' to continue]";
         lines[1] = "We are incredibly happy you decided to pursue your Master here!\nWe also already have the first important task for you!";
         lines[2] = "Not long ago researchers found a new plastic degrading bacterium inside the ocean!";
         lines[3] = "However, they grow really really slow, which makes it difficult to work them in the lab.";
@@ -113,6 +117,33 @@ public class Instructor : MonoBehaviour
         lines[0] = "This is a test";
 
         Debug.Log("Instructor started");
+
+        SpeechBubble.StartDialoge(lines);
+    }
+
+    public void NoSampleAtStation()
+    {
+        lines = new string[1];
+        lines[0] = "You need to pick up the sample first!";
+
+        SpeechBubble.StartDialoge(lines);
+    }
+
+    public void IncorrectDevice()
+    {
+        lines = new string[1];
+        switch (Random.Range(1, 4))
+        {
+            case 1:
+                lines[0] = "Seems like you are some steps ahead!\n\nThis is not the correct station to proceed.";
+                break;
+            case 2:
+                lines[0] = "Unfortunately this is not the next step.\n\nBut keep your motivation up :)";
+                break;
+            case 3:
+                lines[0] = "You are doing great!\n\nBut this is not the correct station to proceed.";
+                break;
+        }
 
         SpeechBubble.StartDialoge(lines);
     }
