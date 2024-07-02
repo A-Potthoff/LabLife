@@ -5,9 +5,10 @@ using UnityEngine;
 public class movement_script : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private Sprite sideSprite;
-    [SerializeField] private Sprite topSprite;
-    [SerializeField] private Sprite downSprite;
+    //[SerializeField] private Sprite sideSprite;
+    //[SerializeField] private Sprite topSprite;
+    //[SerializeField] private Sprite downSprite;
+    private Vector3 originalScale;
 
     private SpriteRenderer spriteRenderer;
     private Vector2 movement;
@@ -21,6 +22,7 @@ public class movement_script : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
             spriteRenderer = GetComponent<SpriteRenderer>();
+            originalScale = transform.localScale;
         }
         else
         {
@@ -43,20 +45,14 @@ public class movement_script : MonoBehaviour
 
     private void UpdateSprite()
     {
-        if (movement.x != 0)
+        //use the transform to flip the sprite
+        if (movement.x > 0)
         {
-            spriteRenderer.sprite = sideSprite;
-            spriteRenderer.flipX = movement.x < 0; // Flip sprite based on direction
+            transform.localScale = new Vector3(-originalScale.x, originalScale.y, originalScale.z);
         }
-        else if (movement.y > 0)
+        else if (movement.x < 0)
         {
-            spriteRenderer.sprite = topSprite;
-            spriteRenderer.flipX = false; // for up and down movement the flip should be disabled
-        }
-        else if (movement.y < 0)
-        {
-            spriteRenderer.sprite = downSprite;
-            spriteRenderer.flipX = false; // see above
+            transform.localScale = originalScale;
         }
     }
 }
