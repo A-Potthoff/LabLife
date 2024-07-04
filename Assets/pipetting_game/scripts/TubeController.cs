@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -5,32 +7,83 @@ public class TubeController : MonoBehaviour
 {
     [SerializeField] public float fill; //purposefully left as float to allow continuous filling of the tube in the future
     [SerializeField] public Sprite sprite_tube_empty;
-    [SerializeField] public Sprite sprite_tube_bacteria;
+    [SerializeField] public Sprite sprite_tube_filled;
+    [SerializeField] public Sprite sprite_tube_filled_033;
+    [SerializeField] public Sprite sprite_tube_filled_05;
+    [SerializeField] public Sprite sprite_tube_filled_066;
+    [SerializeField] public List<ContentsEnum.Enum> contents;
+    [SerializeField] public float onePipetteEquivalent = 0.33f;
 
     private SpriteRenderer spriteRenderer;
+    private Instructor Instructor;
 
     private void Start()
     {
+        Instructor = Instructor.Instance;
         spriteRenderer = GetComponent<SpriteRenderer>();
         update_sprite();
     }
 
     public void update_sprite()
     {
-        if (fill == 1) { spriteRenderer.sprite = sprite_tube_bacteria; }
-        else { spriteRenderer.sprite = sprite_tube_empty; }
+        switch (fill)
+        {
+            case 0f:
+                spriteRenderer.sprite = sprite_tube_empty;
+                break;
+            case 0.33f:
+                spriteRenderer.sprite = sprite_tube_filled_033;
+                break;
+            case 0.5f:
+                spriteRenderer.sprite = sprite_tube_filled_05;
+                break;
+            case 0.66f:
+                spriteRenderer.sprite = sprite_tube_filled_066;
+                break;
+            case 0.99f:
+                spriteRenderer.sprite = sprite_tube_filled;
+                break;
+            case 1f:
+                spriteRenderer.sprite = sprite_tube_filled;
+                break;
+        }
     }
 
-    public void fill_tube()
+    public void fill_tube(ContentsEnum.Enum liquid)
     {
-        fill = 1;
+        fill += onePipetteEquivalent;
+        contents.Add(liquid);
+
         update_sprite();
     }
-
-    public void empty_tube()
+    public void empty_tube(ContentsEnum.Enum liquid)
     {
-        fill = 0;
-        update_sprite();
+        //if there are several liquids mixed in this tube, Instructor recommends to not do it
+        if (contents.Count == 1)
+        {
+            fill -= onePipetteEquivalent;
+            contents.Remove(liquid);
+            update_sprite();
+        }
+        else //in this case the tube is empty. Do nothing
+        {
+        }
+    }
+
+    public ContentsEnum.Enum returnContents()
+    {
+        if (contents.Count == 0)
+        {
+            return ContentsEnum.Enum.None;
+        }
+        if (contents.Count >= 2)
+        {
+            return ContentsEnum.Enum.Mixture;
+        }
+        else
+        {
+            return contents[0]; //return the only element in the list
+        }
     }
 }
 

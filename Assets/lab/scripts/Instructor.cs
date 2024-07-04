@@ -147,5 +147,22 @@ public class Instructor : MonoBehaviour
 
         SpeechBubble.StartDialoge(lines);
     }
+
+    public void PipetteTubeWithMixture()
+    {
+        lines = new string[1];
+        lines[0] = "I'm sorry, but you can't separate and pipette the liquids if they are already mixed in the tube.";
+
+        SpeechBubble.StartDialoge(lines);
+    }
+
+    public void PipettingIntoFullTube()
+    {
+        lines = new string[1];
+        lines[0] = "The tube is already full. You can't add more liquid to it.";
+
+        SpeechBubble.StartDialoge(lines);
+    }
+
 }
 
