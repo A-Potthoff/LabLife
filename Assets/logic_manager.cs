@@ -11,9 +11,8 @@ public class logic_manager : MonoBehaviour
     [SerializeField] private GameObject SampleObject;
     [SerializeField] private GameObject PlayerObject;
     [SerializeField] private GameObject InstructorObject;
-    private Sample_script sampleScript;
+    private Sample_script Sample;
     private Instructor Instructor;
-    [SerializeField] private int StepCompleted = 0;
     void Start()
     {
         // Make sure that the object is UNIQUE and not destroyed when loading a new scene
@@ -22,7 +21,7 @@ public class logic_manager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
 
-            sampleScript = Sample_script.Instance;
+            Sample = Sample_script.Instance;
             Instructor = Instructor.Instance;
         }
         else
@@ -31,32 +30,53 @@ public class logic_manager : MonoBehaviour
         }
     }
 
-    public void return_to_lab(bool success = true)
+    public void return_to_lab(bool success = true, bool LoadSceneNecessary = true)
     {
         if (success) // check if the minigame was completed successfully
         {
-            StepCompleted++;
+            if (LoadSceneNecessary)
+            {
+                Instructor.gameObject.SetActive(true);
+                Instructor.FinishedMinigame();
 
-            Instructor.gameObject.SetActive(true);
-            Instructor.FinishedMinigame();
+                StartCoroutine(EndMinigameAfterDelay());
 
-            StartCoroutine(EndMinigameAfterDelay());
-
-            SceneManager.LoadScene("main");
-            Debug.Log("Returned to lab");
+                SceneManager.LoadScene("main");
+            }
 
             // update the sample script
 
-            switch(StepCompleted){
-                case 1:
-                    sampleScript.BacteriaLysed();
+            switch(Sample.content)
+            {
+                case ContentsEnum.Enum.Bacteria:
+                    Sample.LysedBacteria();
                     break;
-                case 2:
-                    sampleScript.isCentrifuged();
+                case ContentsEnum.Enum.LysedBacteria:
+                    Sample.isCentrifuged();
                     break;
-                case 3:
+                case ContentsEnum.Enum.CellPellet_DNASupernatant:
+                    Sample.DNA_PCR_Solution();
                     break;
-                case 4:
+                case ContentsEnum.Enum.DNA_PCR_Solution:
+                    Sample.PurifiedGene();
+                    break;
+                case ContentsEnum.Enum.PurifiedGene:
+                    Sample.GGA_mix();
+                    break;
+                case ContentsEnum.Enum.GGA_mix:
+                    Sample.Plasmids();
+                    break;
+                case ContentsEnum.Enum.Plasmids:
+                    Sample.Plasmids_Cells();
+                    break;
+                case ContentsEnum.Enum.Plasmids_Cells:
+                    Sample.TransformedCells();
+                    break;
+                case ContentsEnum.Enum.TransformedCells:
+                    Sample.PetriDish();
+                    break;
+                case ContentsEnum.Enum.PetriDish:
+                    // end of the game
                     break;
             }
 
@@ -84,7 +104,7 @@ public class logic_manager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.R))
         {
-            sampleScript.Reset();
+            Sample.Reset();
         }
         if (Input.GetKeyDown(KeyCode.C))
         {

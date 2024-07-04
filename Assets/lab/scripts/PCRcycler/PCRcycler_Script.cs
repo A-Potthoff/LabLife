@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +14,7 @@ public class PCRcycler_Script : MonoBehaviour
     private Sample_script sampleScript;
     private movement_script Player;
     private Instructor Instructor;
+    private logic_manager LogicManager;
 
     private void Start()
     {
@@ -23,6 +26,7 @@ public class PCRcycler_Script : MonoBehaviour
         sampleScript = Sample_script.Instance;
         Player = movement_script.Instance;
         Instructor = Instructor.Instance;
+        LogicManager = logic_manager.Instance;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -57,14 +61,29 @@ public class PCRcycler_Script : MonoBehaviour
         //check if all the necessary conditions are met to start the minigame
         if (Player.isCarrying)
         {
-            if (sampleScript.content == ContentsEnum.Enum.None)     // HAS TO BE ADAPTED
+            if (sampleScript.content == ContentsEnum.Enum.DNA_PCR_Solution)     // HAS TO BE ADAPTED
             {
-
-                Debug.Log("PCR cycler started!");
                 // Starting LoadingBar
                 LoadingBar.SetActive(true); // Show the loading bar
                 float duration = 7f;
                 loadingBarScript.Loading(duration);
+                StartCoroutine(finishPCR(duration));
+            }
+            else if (sampleScript.content == ContentsEnum.Enum.GGA_mix)     // HAS TO BE ADAPTED
+            {
+                // Starting LoadingBar
+                LoadingBar.SetActive(true); // Show the loading bar
+                float duration = 7f;
+                loadingBarScript.Loading(duration);
+                StartCoroutine(finishPCR(duration));
+            }
+            else if (sampleScript.content == ContentsEnum.Enum.Plasmids_Cells)     // HAS TO BE ADAPTED
+            {
+                // Starting LoadingBar
+                LoadingBar.SetActive(true); // Show the loading bar
+                float duration = 7f;
+                loadingBarScript.Loading(duration);
+                StartCoroutine(finishPCR(duration));
             }
             else
             {
@@ -77,7 +96,10 @@ public class PCRcycler_Script : MonoBehaviour
             Instructor.gameObject.SetActive(true);
             Instructor.NoSampleAtStation();
         }
-        
-
+    }
+    private IEnumerator finishPCR(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        LogicManager.return_to_lab(true, false);
     }
 }

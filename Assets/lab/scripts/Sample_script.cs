@@ -57,7 +57,7 @@ public class Sample_script : MonoBehaviour{
         transform.position += new Vector3(1, 0, 0); //pop the sample a bit to the right
     }
 
-    public void BacteriaLysed()
+    public void LysedBacteria()
     {
         // change the sprite of the object to the one with bacteria
         spriteRenderer.sprite = sprite_tube_bacteria;
@@ -70,6 +70,62 @@ public class Sample_script : MonoBehaviour{
         spriteRenderer.sprite = sprite_tube_centrifuged;
         content = ContentsEnum.Enum.CellPellet_DNASupernatant;
     }
+
+    public void DNA_PCR_Solution()
+    {
+        // change the sprite of the object to the one with bacteria
+        //spriteRenderer.sprite = tube_DNA;
+        content = ContentsEnum.Enum.DNA_PCR_Solution;
+    }
+
+    public void PurifiedGene()
+    {
+        // change the sprite of the object to the one with bacteria
+        //spriteRenderer.sprite = tube_DNA;
+        content = ContentsEnum.Enum.PurifiedGene;
+    }
+
+    public void GGA_mix()
+    {
+        // change the sprite of the object to the one with bacteria
+        //spriteRenderer.sprite = tube_DNA;
+        content = ContentsEnum.Enum.GGA_mix;
+    }
+
+    public void Plasmids()
+    {
+        // change the sprite of the object to the one with bacteria
+        //spriteRenderer.sprite = tube_DNA;
+        content = ContentsEnum.Enum.Plasmids;
+    }
+
+    public void Plasmids_Cells()
+    {
+        // change the sprite of the object to the one with bacteria
+        //spriteRenderer.sprite = tube_DNA;
+        content = ContentsEnum.Enum.Plasmids_Cells;
+    }
+
+    public void TransformedCells()
+    {
+        // change the sprite of the object to the one with bacteria
+        //spriteRenderer.sprite = tube_DNA;
+        content = ContentsEnum.Enum.TransformedCells;
+    }
+
+    public void PetriDish()
+    {
+        // change the sprite of the object to the one with bacteria
+        //spriteRenderer.sprite = tube_DNA;
+        content = ContentsEnum.Enum.PetriDish;
+    }
+
+
+
+
+
+
+
 
 
     public void Reset()

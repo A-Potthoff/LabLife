@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/pipetting_game/pipetting_scene.unity
-    guid: 400385070adccff428bb8913a2183a3a
-  - enabled: 1
     path: Assets/lab/main.unity
     guid: 684cd0a482c9eb74d922f6b21edb87b4
   - enabled: 1
@@ -17,4 +14,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Easteregg/easteregg.unity
     guid: be516897031ad42439d44c07d7ea2052
+  - enabled: 1
+    path: Assets/pipetting_game/pipetting_scene_1.unity
+    guid: 400385070adccff428bb8913a2183a3a
+  - enabled: 1
+    path: Assets/pipetting_game/pipetting_scene_2.unity
+    guid: e70433ce472434a45896faffa3bac0ad
+  - enabled: 1
+    path: Assets/pipetting_game/pipetting_scene_3.unity
+    guid: 90062cedd4351494397c931067522ba3
+  - enabled: 1
+    path: Assets/pipetting_game/pipetting_scene_4.unity
+    guid: 9508df942b9581a438748e51b8377044
+  - enabled: 1
+    path: Assets/pipetting_game/pipetting_scene_5.unity
+    guid: e938b406aed41e74c9a5add1c4c31cec
   m_configObjects: {}

@@ -6,7 +6,6 @@ public class PipettingStation : MonoBehaviour
     private Vector3 originalScale;
     private Vector3 enlargedScale;
     private bool isPlayerInContact = false;
-    private bool alreadyInstructed = false;
 
     [SerializeField] private GameObject Sample;
     private Sample_script sampleScript;
@@ -56,24 +55,44 @@ public class PipettingStation : MonoBehaviour
         {
             if (sampleScript.content == ContentsEnum.Enum.Bacteria)
             {
-                SceneManager.LoadScene("pipetting_scene"); // Replace with your scene name
-                Debug.Log("Pipetting started!");
+                SceneManager.LoadScene("pipetting_scene_1"); 
 
-                // also set the player and sample to active
-                GameObject.Find("Player").SetActive(false);
+                Player.gameObject.SetActive(false);
 
-                if (!alreadyInstructed)
-                {
-                    alreadyInstructed = true;
-                    Instructor.gameObject.SetActive(true);
-                    Instructor.IntroPipetting();
-                }
+                Instructor.gameObject.SetActive(true);
+                Instructor.IntroPipetting();
+            }
+            else if (sampleScript.content == ContentsEnum.Enum.CellPellet_DNASupernatant)
+            {
+                SceneManager.LoadScene("pipetting_scene_2"); 
+                Player.gameObject.SetActive(false);
+                //Instructor.gameObject.SetActive(true);
+                //Instructor.IntroPipetting();
+            }
+            else if (sampleScript.content == ContentsEnum.Enum.PurifiedGene)
+            {
+                SceneManager.LoadScene("pipetting_scene_3"); 
+                Player.gameObject.SetActive(false);
+                //Instructor.gameObject.SetActive(true);
+                //Instructor.IntroPipetting();
+            }
+            else if (sampleScript.content == ContentsEnum.Enum.Plasmids)
+            {
+                SceneManager.LoadScene("pipetting_scene_4"); 
+                Player.gameObject.SetActive(false);
+                //Instructor.gameObject.SetActive(true);
+                //Instructor.IntroPipetting();
+            }
+            else if (sampleScript.content == ContentsEnum.Enum.TransformedCells)
+            {
+                SceneManager.LoadScene("pipetting_scene_5");
+                Player.gameObject.SetActive(false);
+                //Instructor.gameObject.SetActive(true);
+                //Instructor.IntroPipetting();
             }
             else
             {
                 Debug.Log("Conditions not met to start the minigame.");
-
-                Debug.Log(sampleScript.content);
 
                 Instructor.gameObject.SetActive(true);
                 Instructor.IncorrectDevice();

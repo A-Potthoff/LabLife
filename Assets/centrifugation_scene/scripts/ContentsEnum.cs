@@ -11,12 +11,17 @@ public class ContentsEnum: MonoBehaviour
         LysingSolution,
         LysedBacteria,
         CellPellet_DNASupernatant,
+        DNA_PCR_Solution,
         CellPellet,
-        DNA,
+        PurifiedGene,
         PCRMasterSoluion,
         Backbone,
         GGAMasterSolution,
+        GGA_mix,
+        Plasmids,
+        Plasmids_Cells,
         TransformedCells,
+        PetriDish,
         Mixture
     }
 }
