@@ -25,9 +25,7 @@ public class logic_manager : MonoBehaviour
             sampleScript = SampleObject.GetComponent<Sample_script>();
             Instructor = Instructor.Instance;
 
-            // start the introduction of the instructor, this will be started only at the first start of the game
-            Instructor.StartIntroduction();  // UNCOMMENT IN FINAL VERSION
-            //InstructorObject.SetActive(false); // COMMENT OUT IN FINAL VERSION
+            // instead of starting the instructor here (prior versions), it will be started once the player destroys the disclaimer
         }
         else
         {

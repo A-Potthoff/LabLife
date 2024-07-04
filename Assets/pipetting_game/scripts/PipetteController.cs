@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class PipetteController : MonoBehaviour
 {
     private Vector3 offset;
-    [SerializeField] public float fill; //purposefully left as float to allow continuous filling of the tube in the future
-    private TubeController currentTube = null;
+    [SerializeField] public float fill; //purposefully left as float to allow continuous filling of the tube in the 
+    [SerializeField] private TubeController currentTube = null;
 
     private SpriteRenderer spriteRenderer;
     [SerializeField] public Sprite pipette_empty;
@@ -53,7 +53,7 @@ public class PipetteController : MonoBehaviour
         if (other.CompareTag("TubeOpening")) 
         {
             Debug.Log("Pipette is above a tube");
-            currentTube = other.GetComponent<TubeController>();
+            currentTube = other.GetComponentInParent<TubeController>();
             /*TubeFilling_Script = other.GetComponent<TubeFilling_Script>();
             tubeImage = other.GetComponentInChildren<Image>();
 
