@@ -11,16 +11,25 @@ public class Sample_script : MonoBehaviour{
     }
 
     [Header("Sample sprites")]
-    [SerializeField] public Sprite sprite_tube_empty;
-    [SerializeField] public Sprite sprite_tube_bacteria;
-    [SerializeField] public Sprite sprite_tube_centrifuged;
-    //[SerializeField] public Sprite tube_DNA;
+    [SerializeField] public Sprite sp_petri_dish;
+    [SerializeField] public Sprite sp_tube_filled;
+    [SerializeField] public Sprite sp_tube_centrifuged;
+
+    [Header("Symbol sprites")]
+    [SerializeField] public Sprite sp_bacteria;
+    [SerializeField] public Sprite sp_lysed_bacteria;
+    [SerializeField] public Sprite sp_DNA_PCR_Solution;
+    [SerializeField] public Sprite sp_purified_gene;
+    [SerializeField] public Sprite sp_GGA_mix;
+    [SerializeField] public Sprite sp_plasmids;
+    [SerializeField] public Sprite sp_plasmids_cells;
+    [SerializeField] public Sprite sp_transformedCells;
 
     [Header("Sample Attributes")]
-    [SerializeField] public Form form;
     [SerializeField] public ContentsEnum.Enum content;
 
     private SpriteRenderer spriteRenderer;
+    private SpriteRenderer SymbolRenderer;
     public static Sample_script Instance;
 
     void Awake()
@@ -41,7 +50,7 @@ public class Sample_script : MonoBehaviour{
     {
         spriteRenderer = GetComponent<SpriteRenderer>(); //to change the sprites of this object
         content = ContentsEnum.Enum.Bacteria;
-        spriteRenderer.sprite = sprite_tube_empty;     // TO BE CHANGED!
+        SymbolRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>(); //to change the sprites of the symbol
     }
 
     public void Pickup(Transform carryPosition)
@@ -57,75 +66,66 @@ public class Sample_script : MonoBehaviour{
         transform.position += new Vector3(1, 0, 0); //pop the sample a bit to the right
     }
 
+
+
+    //-------------------------------------update the Sample after Minigames--------------------------------------------
+
+
     public void LysedBacteria()
     {
-        // change the sprite of the object to the one with bacteria
-        spriteRenderer.sprite = sprite_tube_bacteria;
         content = ContentsEnum.Enum.LysedBacteria;
+        SymbolRenderer.sprite = sp_lysed_bacteria;
     }
 
     public void isCentrifuged()
     {
-        // change the sprite of the object to the one with bacteria
-        spriteRenderer.sprite = sprite_tube_centrifuged;
+        spriteRenderer.sprite = sp_tube_centrifuged;
         content = ContentsEnum.Enum.CellPellet_DNASupernatant;
+        SymbolRenderer.sprite = null;
     }
 
     public void DNA_PCR_Solution()
     {
-        // change the sprite of the object to the one with bacteria
-        //spriteRenderer.sprite = tube_DNA;
+        spriteRenderer.sprite = sp_tube_filled;
         content = ContentsEnum.Enum.DNA_PCR_Solution;
+        SymbolRenderer.sprite = sp_DNA_PCR_Solution;
     }
 
     public void PurifiedGene()
     {
-        // change the sprite of the object to the one with bacteria
-        //spriteRenderer.sprite = tube_DNA;
         content = ContentsEnum.Enum.PurifiedGene;
+        SymbolRenderer.sprite = sp_purified_gene;
     }
 
     public void GGA_mix()
     {
-        // change the sprite of the object to the one with bacteria
-        //spriteRenderer.sprite = tube_DNA;
         content = ContentsEnum.Enum.GGA_mix;
+        SymbolRenderer.sprite = sp_GGA_mix;
     }
 
     public void Plasmids()
     {
-        // change the sprite of the object to the one with bacteria
-        //spriteRenderer.sprite = tube_DNA;
         content = ContentsEnum.Enum.Plasmids;
+        SymbolRenderer.sprite = sp_plasmids;
     }
 
     public void Plasmids_Cells()
     {
-        // change the sprite of the object to the one with bacteria
-        //spriteRenderer.sprite = tube_DNA;
         content = ContentsEnum.Enum.Plasmids_Cells;
+        SymbolRenderer.sprite = sp_plasmids_cells;
     }
 
     public void TransformedCells()
     {
-        // change the sprite of the object to the one with bacteria
-        //spriteRenderer.sprite = tube_DNA;
         content = ContentsEnum.Enum.TransformedCells;
+        SymbolRenderer.sprite = sp_transformedCells;
     }
 
     public void PetriDish()
     {
-        // change the sprite of the object to the one with bacteria
-        //spriteRenderer.sprite = tube_DNA;
+        spriteRenderer.sprite = sp_petri_dish;
         content = ContentsEnum.Enum.PetriDish;
     }
-
-
-
-
-
-
-
 
 
     public void Reset()
