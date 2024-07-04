@@ -2,16 +2,7 @@ using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class Sample_script : MonoBehaviour{
-    public enum Content
-    {
-        None,
-        DNA,
-        plasmids,
-        cells,
-        cells_plasmids,
-        transformed_cells
-    }
-
+    
     public enum Form
     {
         tube,
@@ -22,13 +13,12 @@ public class Sample_script : MonoBehaviour{
     [Header("Sample sprites")]
     [SerializeField] public Sprite sprite_tube_empty;
     [SerializeField] public Sprite sprite_tube_bacteria;
+    [SerializeField] public Sprite sprite_tube_centrifuged;
     //[SerializeField] public Sprite tube_DNA;
 
     [Header("Sample Attributes")]
     [SerializeField] public Form form;
-    [SerializeField] public bool isCentrifuged;
-    [SerializeField] public Content content;
-    [SerializeField] public bool isConcentrated;
+    [SerializeField] public ContentsEnum.Enum content;
 
     private SpriteRenderer spriteRenderer;
     public static Sample_script Instance;
@@ -50,6 +40,7 @@ public class Sample_script : MonoBehaviour{
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>(); //to change the sprites of this object
+        content = ContentsEnum.Enum.Bacteria;
     }
 
     public void Pickup(Transform carryPosition)
@@ -65,12 +56,19 @@ public class Sample_script : MonoBehaviour{
         transform.position += new Vector3(1, 0, 0); //pop the sample a bit to the right
     }
 
-    public void bacteria_transferred()
+    public void BacteriaLysed()
     {
         // change the sprite of the object to the one with bacteria
         spriteRenderer.sprite = sprite_tube_bacteria;
+        content = ContentsEnum.Enum.LysedBacteria;
     }
 
+    public void isCentrifuged()
+    {
+        // change the sprite of the object to the one with bacteria
+        spriteRenderer.sprite = sprite_tube_centrifuged;
+        content = ContentsEnum.Enum.CellPellet_DNASupernatant;
+    }
 
 
 

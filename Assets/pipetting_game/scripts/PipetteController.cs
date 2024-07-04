@@ -95,11 +95,12 @@ public class PipetteController : MonoBehaviour
                         // Drop the liquid into the tube and empty the pipette
                         fill = 0;
                         currentTube.fill_tube(content);
+                        content = ContentsEnum.Enum.None;
                         update_sprite();
                     }
                     else
                     {
-                        Debug.Log("Tube is full");
+                        Debug.Log("Instructor: PipettingIntoFullTube");
                         Instructor.gameObject.SetActive(true);
                         Instructor.PipettingIntoFullTube();
                     }
@@ -107,13 +108,13 @@ public class PipetteController : MonoBehaviour
             }
             else if (fill == 0) //if the pipette is empty, fill it
             {
-                if (currentTube != null && currentTube.fill != 0) //if the tube is not empty, fill the pipette
+                if (currentTube != null && currentTube.fill >= 0.1) //if the tube is not empty, fill the pipette
                 {
                     // Fill the pipette from the tube and empty the tube
                     content = currentTube.returnContents();
                     if (content == ContentsEnum.Enum.Mixture) //this is returned if the tube has several liquids mixed in it
                     {
-                        Debug.Log("Mixture in the tube");
+                        Debug.Log("Instructor: PipetteTubeWithMixture");
                         Instructor.gameObject.SetActive(true);
                         Instructor.PipetteTubeWithMixture();
                     }

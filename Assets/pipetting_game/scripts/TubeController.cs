@@ -3,24 +3,34 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
+using System.Collections;
 
 public class TubeController : MonoBehaviour
 {
     [SerializeField] public float fill; //purposefully left as float to allow continuous filling of the tube in the future
+
+    [Header("Sprites")]
     [SerializeField] public Sprite sprite_tube_empty;
     [SerializeField] public Sprite sprite_tube_filled;
     [SerializeField] public Sprite sprite_tube_filled_033;
     [SerializeField] public Sprite sprite_tube_filled_05;
     [SerializeField] public Sprite sprite_tube_filled_066;
+
+    [Header("Contents")]
     [SerializeField] public List<ContentsEnum.Enum> contents;
+
+    [Header("Scene specifics")]
     [SerializeField] public float onePipetteEquivalent = 0.33f;
+    [SerializeField] public List<ContentsEnum.Enum> aim_of_minigame;
 
     private SpriteRenderer spriteRenderer;
     private Instructor Instructor;
+    private logic_manager logic_Manager;
 
     private void Start()
     {
         Instructor = Instructor.Instance;
+        logic_Manager = logic_manager.Instance;
         spriteRenderer = GetComponent<SpriteRenderer>();
         update_sprite();
     }
@@ -48,7 +58,7 @@ public class TubeController : MonoBehaviour
                 spriteRenderer.sprite = sprite_tube_filled;
                 break;
         }*/
-        if (fill == 0) {
+        if (fill <= 0.2) {
             spriteRenderer.sprite = sprite_tube_empty;
         } else {
             spriteRenderer.sprite = sprite_tube_filled;
@@ -58,38 +68,60 @@ public class TubeController : MonoBehaviour
     public void fill_tube(ContentsEnum.Enum liquid)
     {
         fill += onePipetteEquivalent;
-        contents.Add(liquid);
+        if (contents.Count(item => item == liquid) == 0) //if the liquid is not in the list
+        {
+            contents.Add(liquid);
+        }
 
         update_sprite();
+
+        CheckIfMinigameEnds();
     }
     public void empty_tube(ContentsEnum.Enum liquid)
     {
-        //if there are several liquids mixed in this tube, Instructor recommends to not do it
         if (contents.Count(item => item != ContentsEnum.Enum.None) == 1)
         {
             fill -= onePipetteEquivalent;
-            contents.Remove(liquid);
-            update_sprite();
+            if (fill == 0) //only remove the liquid if it is empty, else there is liquid left.
+            {
+                contents.Remove(liquid);
+            }
+            //else do nothing
         }
-        else //in this case the tube is empty. Do nothing
-        {
-        }
+        update_sprite();
     }
 
     public ContentsEnum.Enum returnContents()
     {
         if (contents.Count(item => item != ContentsEnum.Enum.None) == 0)
         {
-            return ContentsEnum.Enum.None;
+            return ContentsEnum.Enum.None; //return None if the tube has no contents
         }
         if (contents.Count(item => item != ContentsEnum.Enum.None) >= 2)
         {
-            return ContentsEnum.Enum.Mixture;
+            return ContentsEnum.Enum.Mixture; //return Mixture if the tube has several liquids mixed in it
         }
         else
         {
             return contents[0]; //return the only element in the list
         }
+    }
+
+    private void CheckIfMinigameEnds()
+    {
+        if (contents.Count == aim_of_minigame.Count && contents.All(aim_of_minigame.Contains)) //if the tube has the same contents as the aim of the minigame
+        {
+            Instructor.gameObject.SetActive(true);
+            Instructor.FinishedMinigame();
+
+            StartCoroutine(EndMinigameAfterDelay());
+        }
+    }
+
+    private IEnumerator EndMinigameAfterDelay()
+    {
+        yield return new WaitForSeconds(3);
+        logic_Manager.return_to_lab(true);
     }
 }
 

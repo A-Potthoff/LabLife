@@ -6,8 +6,12 @@ public class PipettingStation : MonoBehaviour
     private Vector3 originalScale;
     private Vector3 enlargedScale;
     private bool isPlayerInContact = false;
+    private bool alreadyInstructed = false;
+
     [SerializeField] private GameObject Sample;
     private Sample_script sampleScript;
+    private Instructor Instructor;
+    private movement_script Player;
 
     private void Start()
     {
@@ -15,6 +19,8 @@ public class PipettingStation : MonoBehaviour
         enlargedScale = originalScale * 1.1f; // Increase scale by 10%
 
         sampleScript = Sample.GetComponent<Sample_script>();
+        Instructor = Instructor.Instance;
+        Player = movement_script.Instance;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -46,21 +52,35 @@ public class PipettingStation : MonoBehaviour
 
     public void Start_minigame()
     {
-        //check if all the necessary conditions are met to start the minigame
-
-        if (sampleScript.content == Sample_script.Content.None)
+        if (Player.isCarrying)//check if all the necessary conditions are met to start the minigame
         {
-            SceneManager.LoadScene("pipetting_scene"); // Replace with your scene name
-            Debug.Log("Pipetting started!");
+            if (sampleScript.content == ContentsEnum.Enum.Bacteria)
+            {
+                SceneManager.LoadScene("pipetting_scene"); // Replace with your scene name
+                Debug.Log("Pipetting started!");
 
-            // also set the player and sample to active
-            GameObject.Find("Player").SetActive(false);
-            GameObject.Find("Sample").SetActive(false);
+                // also set the player and sample to active
+                GameObject.Find("Player").SetActive(false);
+
+                if (!alreadyInstructed)
+                {
+                    alreadyInstructed = true;
+                    Instructor.gameObject.SetActive(true);
+                    Instructor.IntroPipetting();
+                }
+            }
+            else
+            {
+                Debug.Log("Conditions not met to start the minigame.");
+
+                Instructor.gameObject.SetActive(true);
+                Instructor.IncorrectDevice();
+            }
         }
         else
         {
-            Debug.Log("Conditions not met to start the minigame.");
-            //call the help (Instructor!)
+            Instructor.gameObject.SetActive(true);
+            Instructor.NoSampleAtStation();
         }
     }
 }

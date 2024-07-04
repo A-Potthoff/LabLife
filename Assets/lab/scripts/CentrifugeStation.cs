@@ -10,6 +10,7 @@ public class CentrifugeStation : MonoBehaviour
     private Sample_script sampleScript;
     private movement_script Player ;
     private Instructor Instructor;
+    private bool alreadyInstructed = false;
 
     private void Start()
     {
@@ -53,13 +54,20 @@ public class CentrifugeStation : MonoBehaviour
         //check if all the necessary conditions are met to start the minigame
         if (Player.isCarrying) 
         {
-            if (sampleScript.content == Sample_script.Content.cells)
+            if (sampleScript.content == ContentsEnum.Enum.LysedBacteria)
             {
                 SceneManager.LoadScene("centrifugation_scene"); // Replace with your scene name
                 Debug.Log("Centrifugation started!");
 
                 // also set the player and sample to active
                 Player.gameObject.SetActive(false); //sample does not have to be set inactive because it is held by player
+
+                if (!alreadyInstructed)
+                {
+                    alreadyInstructed = true;
+                    Instructor.gameObject.SetActive(true);
+                    Instructor.IntroCentrifuge();
+                }
             }
             else
             {

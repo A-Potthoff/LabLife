@@ -6,6 +6,19 @@ public class Disclaimer : MonoBehaviour
 {
 
     private Instructor Instructor;
+    private static Disclaimer Instance;
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     void Start()
     {
@@ -19,9 +32,8 @@ public class Disclaimer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             Instructor.StartIntroduction();
-            //destroy the disclaimer
-            Destroy(gameObject);
-            
+            //deactivate the disclaimer
+            this.gameObject.SetActive(false);
         }
     }
 }

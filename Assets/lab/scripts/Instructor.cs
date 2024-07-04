@@ -111,10 +111,11 @@ public class Instructor : MonoBehaviour
         SpeechBubble.StartDialoge(lines);
     }
 
-    public void Test()
+    public void IntroPipetting()
     {
-        lines = new string[1];
-        lines[0] = "This is a test";
+        lines = new string[2];
+        lines[0] = "Now we have our DNA in a tube. We can use the pipette to transfer it to a new tube.";
+        lines[1] = "This way we can get rid of the cell debrids and other stuff we don't need.";
 
         Debug.Log("Instructor started");
 
@@ -163,6 +164,26 @@ public class Instructor : MonoBehaviour
 
         SpeechBubble.StartDialoge(lines);
     }
+
+    public void FinishedMinigame()
+    {
+        lines = new string[1];
+        switch (Random.Range(1, 4))
+        {
+            case 1:
+                lines[0] = "You were really good! You have successfully completed this step.";
+                break;
+            case 2:
+                lines[0] = "Very good! :)\nYou learn really fast";
+                break;
+            case 3:
+                lines[0] = "You are doing great! Keep it up!";
+                break;
+        }
+
+        SpeechBubble.StartDialoge(lines);
+    }
+
 
 }
 

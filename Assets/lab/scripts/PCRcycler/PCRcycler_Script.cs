@@ -57,7 +57,7 @@ public class PCRcycler_Script : MonoBehaviour
         //check if all the necessary conditions are met to start the minigame
         if (Player.isCarrying)
         {
-            if (sampleScript.content == Sample_script.Content.None)
+            if (sampleScript.content == ContentsEnum.Enum.None)     // HAS TO BE ADAPTED
             {
 
                 Debug.Log("PCR cycler started!");
@@ -65,9 +65,6 @@ public class PCRcycler_Script : MonoBehaviour
                 LoadingBar.SetActive(true); // Show the loading bar
                 float duration = 7f;
                 loadingBarScript.Loading(duration);
-
-
-
             }
             else
             {
