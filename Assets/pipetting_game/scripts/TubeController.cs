@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Linq;
 
 public class TubeController : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class TubeController : MonoBehaviour
 
     public void update_sprite()
     {
-        switch (fill)
+        /*switch (fill)
         {
             case 0f:
                 spriteRenderer.sprite = sprite_tube_empty;
@@ -46,6 +47,11 @@ public class TubeController : MonoBehaviour
             case 1f:
                 spriteRenderer.sprite = sprite_tube_filled;
                 break;
+        }*/
+        if (fill == 0) {
+            spriteRenderer.sprite = sprite_tube_empty;
+        } else {
+            spriteRenderer.sprite = sprite_tube_filled;
         }
     }
 
@@ -59,7 +65,7 @@ public class TubeController : MonoBehaviour
     public void empty_tube(ContentsEnum.Enum liquid)
     {
         //if there are several liquids mixed in this tube, Instructor recommends to not do it
-        if (contents.Count == 1)
+        if (contents.Count(item => item != ContentsEnum.Enum.None) == 1)
         {
             fill -= onePipetteEquivalent;
             contents.Remove(liquid);
@@ -72,11 +78,11 @@ public class TubeController : MonoBehaviour
 
     public ContentsEnum.Enum returnContents()
     {
-        if (contents.Count == 0)
+        if (contents.Count(item => item != ContentsEnum.Enum.None) == 0)
         {
             return ContentsEnum.Enum.None;
         }
-        if (contents.Count >= 2)
+        if (contents.Count(item => item != ContentsEnum.Enum.None) >= 2)
         {
             return ContentsEnum.Enum.Mixture;
         }

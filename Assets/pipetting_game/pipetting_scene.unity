@@ -794,6 +794,7 @@ MonoBehaviour:
   currentTube: {fileID: 0}
   pipette_empty: {fileID: 21300000, guid: 88e9df58a5ae73641835b30447ccce4c, type: 3}
   pipette_filled: {fileID: 21300000, guid: f32db83767937514f997db0f6926fda9, type: 3}
+  content: 0
 --- !u!50 &1288629621
 Rigidbody2D:
   serializedVersion: 4
@@ -1048,7 +1049,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fill: 0
   sprite_tube_empty: {fileID: 21300000, guid: 5a07c6ad70b02434ab8b51a0de126856, type: 3}
-  sprite_tube_bacteria: {fileID: 21300000, guid: a49afa5e8b8113043882577a82d62986, type: 3}
+  sprite_tube_filled: {fileID: 21300000, guid: a49afa5e8b8113043882577a82d62986, type: 3}
+  sprite_tube_filled_033: {fileID: 0}
+  sprite_tube_filled_05: {fileID: 0}
+  sprite_tube_filled_066: {fileID: 0}
+  contents: 
+  onePipetteEquivalent: 0.33
 --- !u!212 &1474864128
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1178,7 +1184,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fill: 1
   sprite_tube_empty: {fileID: 21300000, guid: 5a07c6ad70b02434ab8b51a0de126856, type: 3}
-  sprite_tube_bacteria: {fileID: 21300000, guid: a49afa5e8b8113043882577a82d62986, type: 3}
+  sprite_tube_filled: {fileID: 21300000, guid: a49afa5e8b8113043882577a82d62986, type: 3}
+  sprite_tube_filled_033: {fileID: 0}
+  sprite_tube_filled_05: {fileID: 0}
+  sprite_tube_filled_066: {fileID: 0}
+  contents: 0100000000000000
+  onePipetteEquivalent: 0.33
 --- !u!50 &1714196425
 Rigidbody2D:
   serializedVersion: 4

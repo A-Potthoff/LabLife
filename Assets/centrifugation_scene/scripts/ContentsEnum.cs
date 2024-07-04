@@ -16,7 +16,8 @@ public class ContentsEnum: MonoBehaviour
         PCRMasterSoluion,
         Backbone,
         GGAMasterSolution,
-        TransformedCells
+        TransformedCells,
+        Mixture
     }
 }
 
