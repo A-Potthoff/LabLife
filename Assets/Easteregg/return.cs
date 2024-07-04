@@ -6,11 +6,11 @@ public class Jerry: MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            GameObject.Find("logic_manager").GetComponent<logic_manager>().return_to_lab(true);
+            GameObject.Find("logic_manager").GetComponent<logic_manager>().return_to_lab(false);
         }
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            GameObject.Find("logic_manager").GetComponent<logic_manager>().return_to_lab(true);
+            GameObject.Find("logic_manager").GetComponent<logic_manager>().return_to_lab(false);
         }
     }
 }

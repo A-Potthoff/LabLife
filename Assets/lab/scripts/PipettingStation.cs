@@ -73,6 +73,8 @@ public class PipettingStation : MonoBehaviour
             {
                 Debug.Log("Conditions not met to start the minigame.");
 
+                Debug.Log(sampleScript.content);
+
                 Instructor.gameObject.SetActive(true);
                 Instructor.IncorrectDevice();
             }

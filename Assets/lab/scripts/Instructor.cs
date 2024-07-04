@@ -136,13 +136,13 @@ public class Instructor : MonoBehaviour
         switch (Random.Range(1, 4))
         {
             case 1:
-                lines[0] = "Seems like you are some steps ahead!\n\nThis is not the correct station to proceed.";
+                lines[0] = "\nSeems like you are some steps ahead!\nThis is not the correct station to proceed.";
                 break;
             case 2:
-                lines[0] = "Unfortunately this is not the next step.\n\nBut keep your motivation up :)";
+                lines[0] = "\nUnfortunately this is not the next step.\nBut keep your motivation up :)";
                 break;
             case 3:
-                lines[0] = "You are doing great!\n\nBut this is not the correct station to proceed.";
+                lines[0] = "\nThis is not the correct station to proceed.";
                 break;
         }
 

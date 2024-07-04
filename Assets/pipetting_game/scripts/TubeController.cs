@@ -111,17 +111,8 @@ public class TubeController : MonoBehaviour
     {
         if (contents.Count == aim_of_minigame.Count && contents.All(aim_of_minigame.Contains)) //if the tube has the same contents as the aim of the minigame
         {
-            Instructor.gameObject.SetActive(true);
-            Instructor.FinishedMinigame();
-
-            StartCoroutine(EndMinigameAfterDelay());
+            logic_Manager.return_to_lab();
         }
-    }
-
-    private IEnumerator EndMinigameAfterDelay()
-    {
-        yield return new WaitForSeconds(3);
-        logic_Manager.return_to_lab(true);
     }
 }
 

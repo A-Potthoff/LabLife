@@ -10,7 +10,7 @@ public class SpeechBubble : MonoBehaviour
     private string[] lines;
     [SerializeField] private float text_speed;
     private int index;
-    private GameObject Instructor;
+    private Instructor Instructor;
     private Coroutine typingCoroutine;
 
     //----------------- defining the lines of text ------------------------------------------------------------------
@@ -18,7 +18,7 @@ public class SpeechBubble : MonoBehaviour
     void Start()
     {
         textComponent.text = string.Empty;
-        Instructor = GameObject.Find("Instructor");
+        Instructor = Instructor.Instance;
     }
 
     void Update()
@@ -67,7 +67,7 @@ public class SpeechBubble : MonoBehaviour
         }
     }
 
-    void NextLine()
+    public void NextLine()
     {
         if (index < this.lines.Length - 1)
         {
@@ -86,7 +86,7 @@ public class SpeechBubble : MonoBehaviour
         {
             textComponent.text = string.Empty;
             //deactivate the speech bubble when the dialoge is over
-            Instructor.SetActive(false);
+            Instructor.gameObject.SetActive(false);
         }
     }
 }

@@ -41,6 +41,7 @@ public class Sample_script : MonoBehaviour{
     {
         spriteRenderer = GetComponent<SpriteRenderer>(); //to change the sprites of this object
         content = ContentsEnum.Enum.Bacteria;
+        spriteRenderer.sprite = sprite_tube_empty;     // TO BE CHANGED!
     }
 
     public void Pickup(Transform carryPosition)
@@ -71,17 +72,8 @@ public class Sample_script : MonoBehaviour{
     }
 
 
-
-
     public void Reset()
     {
-        // reset the attributes of the object
-        //form = "tube";
-        //hasBacteria = false;
-        //isEmpty = true;
-        //isCentrifuged = false;
-        //content = "None";
-        //isConcentrated = false;
-        spriteRenderer.sprite = sprite_tube_empty;
+        Start();
     }
 }

@@ -33,12 +33,16 @@ public class logic_manager : MonoBehaviour
 
     public void return_to_lab(bool success = true)
     {
-        // check if the minigame was completed successfully
-        if (success)
+        if (success) // check if the minigame was completed successfully
         {
             StepCompleted++;
-            
-            SceneManager.LoadScene("main"); // Replace with your scene name
+
+            Instructor.gameObject.SetActive(true);
+            Instructor.FinishedMinigame();
+
+            StartCoroutine(EndMinigameAfterDelay());
+
+            SceneManager.LoadScene("main");
             Debug.Log("Returned to lab");
 
             // update the sample script
@@ -56,18 +60,24 @@ public class logic_manager : MonoBehaviour
                     break;
             }
 
-
-
         }
         else
         {
-            // do something different (not in prototype version)
+            SceneManager.LoadScene("main");
+            Debug.Log("Returned to lab");
         }
         // also set the player and sample to active
         PlayerObject.SetActive(true);
         SampleObject.SetActive(true);
     }
     
+    IEnumerator EndMinigameAfterDelay()
+    {
+        yield return new WaitForSeconds(2);
+        InstructorObject.SetActive(false);
+    }
+
+
     void Update()
     {
         //when t, r, c is pressed  ---- DEBUGGING PURPOSES
@@ -79,11 +89,6 @@ public class logic_manager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             return_to_lab();
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            InstructorObject.SetActive(true);
-            Instructor.StartIntroduction();
         }
     }
 
