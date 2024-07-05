@@ -43,47 +43,7 @@ public class logic_manager : MonoBehaviour
                 StartCoroutine(EndMinigameAfterDelay());
             }
 
-            // update the sample script
-
-            switch(Sample.content)
-            {
-                case ContentsEnum.Enum.Bacteria:
-                    Sample.LysedBacteria();
-                    Instructor.gameObject.SetActive(true);
-                    Instructor.FirstPipettingSuccess();
-                    break;
-                case ContentsEnum.Enum.LysedBacteria:
-                    Sample.isCentrifuged();
-                    Instructor.gameObject.SetActive(true);
-                    Instructor.CentrifugeSuccess();
-                    break;
-                case ContentsEnum.Enum.CellPellet_DNASupernatant:
-                    Sample.DNA_PCR_Solution();
-
-                    break;
-                case ContentsEnum.Enum.DNA_PCR_Solution:
-                    Sample.PurifiedGene();
-                    break;
-                case ContentsEnum.Enum.PurifiedGene:
-                    Sample.GGA_mix();
-                    break;
-                case ContentsEnum.Enum.GGA_mix:
-                    Sample.Plasmids();
-                    break;
-                case ContentsEnum.Enum.Plasmids:
-                    Sample.Plasmids_Cells();
-                    break;
-                case ContentsEnum.Enum.Plasmids_Cells:
-                    Sample.TransformedCells();
-                    break;
-                case ContentsEnum.Enum.TransformedCells:
-                    Sample.PetriDish();
-                    break;
-                case ContentsEnum.Enum.PetriDish:
-                    // end of the game
-                    break;
-            }
-
+            StartCoroutine(UpdateSampleAndDoInstructor());
         }
         else
         {
@@ -102,6 +62,52 @@ public class logic_manager : MonoBehaviour
         // set the player and sample to active
         PlayerObject.SetActive(true);
         SampleObject.SetActive(true);
+    }
+
+    IEnumerator UpdateSampleAndDoInstructor()
+    {
+        yield return new WaitForSeconds(2.1f);
+
+        // update the sample script
+
+        switch (Sample.content)
+        {
+            case ContentsEnum.Enum.Bacteria:
+                Sample.LysedBacteria();
+                Instructor.gameObject.SetActive(true);
+                Instructor.FirstPipettingSuccess();
+                break;
+            case ContentsEnum.Enum.LysedBacteria:
+                Sample.isCentrifuged();
+                Instructor.gameObject.SetActive(true);
+                Instructor.CentrifugeSuccess();
+                break;
+            case ContentsEnum.Enum.CellPellet_DNASupernatant:
+                Sample.DNA_PCR_Solution();
+
+                break;
+            case ContentsEnum.Enum.DNA_PCR_Solution:
+                Sample.PurifiedGene();
+                break;
+            case ContentsEnum.Enum.PurifiedGene:
+                Sample.GGA_mix();
+                break;
+            case ContentsEnum.Enum.GGA_mix:
+                Sample.Plasmids();
+                break;
+            case ContentsEnum.Enum.Plasmids:
+                Sample.Plasmids_Cells();
+                break;
+            case ContentsEnum.Enum.Plasmids_Cells:
+                Sample.TransformedCells();
+                break;
+            case ContentsEnum.Enum.TransformedCells:
+                Sample.PetriDish();
+                break;
+            case ContentsEnum.Enum.PetriDish:
+                // end of the game
+                break;
+        }
     }
 
     void Update()
