@@ -9,13 +9,6 @@ public class TubeController : MonoBehaviour
 {
     [SerializeField] public float fill; //purposefully left as float to allow continuous filling of the tube in the future
 
-    [Header("Sprites")]
-    [SerializeField] public Sprite sprite_tube_empty;
-    [SerializeField] public Sprite sprite_tube_filled;
-    [SerializeField] public Sprite sprite_tube_filled_033;
-    [SerializeField] public Sprite sprite_tube_filled_05;
-    [SerializeField] public Sprite sprite_tube_filled_066;
-
     [Header("Contents")]
     [SerializeField] public List<ContentsEnum.Enum> contents;
 
@@ -23,7 +16,27 @@ public class TubeController : MonoBehaviour
     [SerializeField] public float onePipetteEquivalent = 0.33f;
     [SerializeField] public List<ContentsEnum.Enum> aim_of_minigame;
 
+    [Header("Sprites")]
+    [SerializeField] public Sprite sprite_tube_empty;
+    [SerializeField] public Sprite sprite_tube_filled;
+    [SerializeField] public Sprite sprite_tube_filled_033;
+    [SerializeField] public Sprite sprite_tube_filled_05;
+    [SerializeField] public Sprite sprite_tube_filled_066;
+
+    [Header("Symbols")]
+    [SerializeField] public Sprite sp_bacteria;
+    [SerializeField] public Sprite sp_lysing_solution;
+    [SerializeField] public Sprite sp_CellPellet_DNASupernatant;
+    [SerializeField] public Sprite sp_PCR_Master_solution;
+    [SerializeField] public Sprite sp_backbone;
+    [SerializeField] public Sprite sp_GGAMasterSolution;
+    [SerializeField] public Sprite sp_PurifiedGene;
+    [SerializeField] public Sprite sp_Plasmids;
+    [SerializeField] public Sprite sp_E_coli;
+
     private SpriteRenderer spriteRenderer;
+    private SpriteRenderer SymbolRenderer;
+    private Transform childTransform;
     private Instructor Instructor;
     private logic_manager logic_Manager;
 
@@ -32,37 +45,90 @@ public class TubeController : MonoBehaviour
         Instructor = Instructor.Instance;
         logic_Manager = logic_manager.Instance;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        childTransform = transform.Find("symbol");
+        SymbolRenderer = childTransform.GetComponent<SpriteRenderer>();
         update_sprite();
     }
 
     public void update_sprite()
     {
-        /*switch (fill)
+        if (Mathf.Abs(fill - 0f) <= 0.07f)
         {
-            case 0f:
-                spriteRenderer.sprite = sprite_tube_empty;
-                break;
-            case 0.33f:
-                spriteRenderer.sprite = sprite_tube_filled_033;
-                break;
-            case 0.5f:
-                spriteRenderer.sprite = sprite_tube_filled_05;
-                break;
-            case 0.66f:
-                spriteRenderer.sprite = sprite_tube_filled_066;
-                break;
-            case 0.99f:
-                spriteRenderer.sprite = sprite_tube_filled;
-                break;
-            case 1f:
-                spriteRenderer.sprite = sprite_tube_filled;
-                break;
-        }*/
-        if (fill <= 0.2) {
             spriteRenderer.sprite = sprite_tube_empty;
-        } else {
+        }
+        else if (Mathf.Abs(fill - 0.33f) <= 0.07f)
+        {
+            spriteRenderer.sprite = sprite_tube_filled_033;
+        }
+        else if (Mathf.Abs(fill - 0.5f) <= 0.07f)
+        {
+            spriteRenderer.sprite = sprite_tube_filled_05;
+        }
+        else if (Mathf.Abs(fill - 0.66f) <= 0.07f)
+        {
+            spriteRenderer.sprite = sprite_tube_filled_066;
+        }
+        else if (Mathf.Abs(fill - 0.99f) <= 0.07f || Mathf.Abs(fill - 1f) <= 0.07f)
+        {
             spriteRenderer.sprite = sprite_tube_filled;
         }
+
+        //-------------------------Symobl rendering-------------------------
+
+        if (contents.Count(item => item != ContentsEnum.Enum.None) == 0)
+        {
+            SymbolRenderer.sprite = null;
+        }
+        else if (contents.Count(item => item != ContentsEnum.Enum.None) >= 2)
+        {
+            SymbolRenderer.sprite = null; //if Mixture take away the symbol
+        }
+        else if (contents[0] == ContentsEnum.Enum.Bacteria) 
+        {
+            SymbolRenderer.sprite = sp_bacteria;
+            childTransform.localScale = new Vector3(2, 2, 0);
+        }
+        else if (contents[0] == ContentsEnum.Enum.LysingSolution)
+        {
+            SymbolRenderer.sprite = sp_lysing_solution;
+            childTransform.localScale = new Vector3(.8f, .8f, 0);
+        }
+        else if (contents[0] == ContentsEnum.Enum.CellPellet_DNASupernatant)
+        {
+            SymbolRenderer.sprite = sp_CellPellet_DNASupernatant;
+            childTransform.localScale = new Vector3(0.7f, 0.635f, 0);
+        }
+        else if (contents[0] == ContentsEnum.Enum.PCRMasterSoluion)
+        {
+            SymbolRenderer.sprite = sp_PCR_Master_solution;
+            childTransform.localScale = new Vector3(1.5f, 1.5f, 0);
+        }
+        else if (contents[0] == ContentsEnum.Enum.Backbone)
+        {
+            SymbolRenderer.sprite = sp_backbone;
+            childTransform.localScale = new Vector3(0.6f, 0.6f, 0);
+        }
+        else if (contents[0] == ContentsEnum.Enum.GGAMasterSolution)
+        {
+            SymbolRenderer.sprite = sp_GGAMasterSolution;
+            childTransform.localScale = new Vector3(0.4f, 0.4f, 0);
+        }
+        else if (contents[0] == ContentsEnum.Enum.PurifiedGene)
+        {
+            SymbolRenderer.sprite = sp_PurifiedGene;
+            childTransform.localScale = new Vector3(1.5f, 1.5f, 0);
+        }
+        else if (contents[0] == ContentsEnum.Enum.Plasmids)
+        {
+            SymbolRenderer.sprite = sp_Plasmids;
+            childTransform.localScale = new Vector3(0.6f, .6f, 0);
+        }
+        else if (contents[0] == ContentsEnum.Enum.E_coli)
+        {
+            SymbolRenderer.sprite = sp_E_coli;
+            childTransform.localScale = new Vector3(.3f, .3f, 0);
+        }
+
     }
 
     public void fill_tube(ContentsEnum.Enum liquid)
