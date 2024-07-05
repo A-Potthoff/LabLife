@@ -30,6 +30,7 @@ public class Sample_script : MonoBehaviour{
 
     private SpriteRenderer spriteRenderer;
     private SpriteRenderer SymbolRenderer;
+    private Transform symbolTransform;
     public static Sample_script Instance;
 
     void Awake()
@@ -51,6 +52,7 @@ public class Sample_script : MonoBehaviour{
         spriteRenderer = GetComponent<SpriteRenderer>(); //to change the sprites of this object
         content = ContentsEnum.Enum.Bacteria;
         SymbolRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>(); //to change the sprites of the symbol
+        symbolTransform = transform.GetChild(0).GetComponent<Transform>();
     }
 
     public void Pickup(Transform carryPosition)
@@ -75,6 +77,7 @@ public class Sample_script : MonoBehaviour{
     {
         content = ContentsEnum.Enum.LysedBacteria;
         SymbolRenderer.sprite = sp_lysed_bacteria;
+        symbolTransform.localScale = new Vector3(.5f, .5f, 0);
     }
 
     public void isCentrifuged()
@@ -89,36 +92,42 @@ public class Sample_script : MonoBehaviour{
         spriteRenderer.sprite = sp_tube_filled;
         content = ContentsEnum.Enum.DNA_PCR_Solution;
         SymbolRenderer.sprite = sp_DNA_PCR_Solution;
+        symbolTransform.localScale = new Vector3(1.2f, 1.2f, 0);
     }
 
     public void PurifiedGene()
     {
         content = ContentsEnum.Enum.PurifiedGene;
         SymbolRenderer.sprite = sp_purified_gene;
+        symbolTransform.localScale = new Vector3(1.2f, 1.2f, 0);
     }
 
     public void GGA_mix()
     {
         content = ContentsEnum.Enum.GGA_mix;
         SymbolRenderer.sprite = sp_GGA_mix;
+        symbolTransform.localScale = new Vector3(.6f, .6f, 0);
     }
 
     public void Plasmids()
     {
         content = ContentsEnum.Enum.Plasmids;
         SymbolRenderer.sprite = sp_plasmids;
+        symbolTransform.localScale = new Vector3(.6f, .6f, 0);
     }
 
     public void Plasmids_Cells()
     {
         content = ContentsEnum.Enum.Plasmids_Cells;
         SymbolRenderer.sprite = sp_plasmids_cells;
+        symbolTransform.localScale = new Vector3(.3f, .3f, 0);
     }
 
     public void TransformedCells()
     {
         content = ContentsEnum.Enum.TransformedCells;
         SymbolRenderer.sprite = sp_transformedCells;
+        symbolTransform.localScale = new Vector3(.3f, .3f, 0);
     }
 
     public void PetriDish()

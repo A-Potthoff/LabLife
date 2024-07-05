@@ -21,6 +21,7 @@ public class ContentsEnum: MonoBehaviour
         Plasmids,
         Plasmids_Cells,
         TransformedCells,
+        E_coli,
         PetriDish,
         Mixture
     }
