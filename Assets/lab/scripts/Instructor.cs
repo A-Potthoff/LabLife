@@ -30,25 +30,23 @@ public class Instructor : MonoBehaviour
         }
     }
 
-    /*
     public void StartIntroduction()
     {
         lines = new string[9];
-        lines[0] = "Hey there!\nI'm Eni and I am happy to welcome you to our lab!\n\n[press 'SPACE' to continue]";
+        lines[0] = "Hey there!\nI'm Eni and I am happy to welcome you to our lab!\n[press 'SPACE' to continue]";
         lines[1] = "We are incredibly happy you decided to pursue your Master here!\nWe also already have the first important task for you!";
-        lines[2] = "Not long ago researchers found a new plastic degrading bacterium inside the ocean!";
-        lines[3] = "However, they grow really really slow, which makes it difficult to work them in the lab.";
-        lines[4] = "Therefore we wanna take the gene that is responsible for this degradation out of the bactierum ...";
-        lines[5] = "...and set it into E.coli. E.coli are fast growing bacteria, so working with them is easy. Also they are well studied already, which a big benefit for us.";
+        lines[2] = "\nNot long ago researchers found a new plastic degrading bacterium inside the ocean!";
+        lines[3] = "\nHowever, they grow really really slow, which makes it difficult to work them in the lab.";
+        lines[4] = "\nTherefore we wanna take the gene that is responsible for this degradation out of the bactierum ...";
+        lines[5] = "...and set it into E.coli. E.coli are fast growing bacteria, so working with them is easy. Also they are well studied already, which is a big benefit for us.";
         lines[6] = "This way we can let the bacteria produce the enzyme in large amounts and hopefully use it to break down plastic!";
-        lines[7] = "So let's get started!";
-        lines[8] = "You can pick up the sample by pressing 'E' when you are close to it.";
+        lines[7] = "\nSo let's get started!";
+        lines[8] = "\nYou can pick up the sample by pressing 'E' when you are close to it.";
 
         SpeechBubble.StartDialoge(lines);
     }
-    */
 
-    //*/
+    /*
     public void StartIntroduction()
     {
         lines = new string[1];
@@ -56,7 +54,7 @@ public class Instructor : MonoBehaviour
 
         SpeechBubble.StartDialoge(lines);
     }
-    //*
+    */
 
     public void SamplePickedUp()
     {
