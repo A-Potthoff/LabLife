@@ -61,8 +61,8 @@ public class Instructor : MonoBehaviour
     public void SamplePickedUp()
     {
         lines = new string[1];
-        lines[0] = "Great! Now you can start with the first step of the experiment.";
-        lines[1] = "To interact with the lab equipment simply walk up to it click on them.";
+        lines[0] = "\nGreat! Now you can start with the first step of the experiment.";
+        lines[1] = "\nTo interact with the lab equipment simply walk up to it click on them.";
 
         SpeechBubble.StartDialoge(lines);
     }
@@ -70,10 +70,10 @@ public class Instructor : MonoBehaviour
     public void IntroPipettingStation()
     {
         lines = new string[4];
-        lines[0] = "First, we need to get the DNA out of the cells.";
-        lines[1] = "We have a special liquid that can break up the cells. Doing this will free the DNA";
-        lines[2] = "Take the pipette and transfer both your cells and the special liquid into the new tube.";
-        lines[3] = "You can move the pipette using the mouse and take up and release liquid using [SPACE].";
+        lines[0] = "\nFirst, we need to get the DNA out of the cells.";
+        lines[1] = "\nWe have a special liquid that can break up the cells. Doing this will free the DNA";
+        lines[2] = "\nTake the pipette and transfer both your cells and the special liquid into the new tube.";
+        lines[3] = "\nYou can move the pipette using the mouse and take up and release liquid using [SPACE].";
 
         SpeechBubble.StartDialoge(lines);
     }
@@ -81,8 +81,8 @@ public class Instructor : MonoBehaviour
     public void FirstPipettingSuccess()
     {
         lines = new string[2];
-        lines[0] = "Wow! You are doing really good so far.";
-        lines[1] = "Now we got a wild mix of DNA and cell parts in the tube. Let's separate them!";
+        lines[0] = "\nWow! You are doing really good so far.";
+        lines[1] = "\nNow we got a wild mix of DNA and cell parts in the tube. Let's separate them!";
 
         SpeechBubble.StartDialoge(lines);
     }
@@ -103,8 +103,8 @@ public class Instructor : MonoBehaviour
     public void FailCentrifuge()
     {
         lines = new string[2];
-        lines[0] = "BE CAREFUL! You have to balance the centrifuge first before starting it.";
-        lines[1] = "Lab equipment can be extremely expensive so we dont want to break it!";
+        lines[0] = "\nBE CAREFUL! You have to balance the centrifuge first before starting it.";
+        lines[1] = "\nLab equipment can be extremely expensive so we dont want to break it!";
 
         Debug.Log("Instructor started");
 
@@ -114,7 +114,9 @@ public class Instructor : MonoBehaviour
     public void CentrifugeSuccess()
     {
         lines = new string[1];
-        lines[0] = "Great job! Now we can pipette out the now separated DNA.";
+        lines[0] = "\nGreat job! Now we can pipette out the now separated DNA.";
+
+        SpeechBubble.StartDialoge(lines);
     }
 
     public void IntroPipetting()
@@ -124,15 +126,13 @@ public class Instructor : MonoBehaviour
         lines[1] = "\nTherefore we have our special lysing solution that can break the cells open to release the DNA.";
         lines[2] = "\nYou can drag the pipette with your mouse and pipette with SPACE.";
 
-        Debug.Log("Instructor started");
-
         SpeechBubble.StartDialoge(lines);
     }
 
     public void NoSampleAtStation()
     {
         lines = new string[1];
-        lines[0] = "You need to pick up the sample first!";
+        lines[0] = "\nYou need to pick up the sample first!";
 
         SpeechBubble.StartDialoge(lines);
     }
@@ -159,19 +159,27 @@ public class Instructor : MonoBehaviour
     public void PipetteTubeWithMixture()
     {
         lines = new string[1];
-        lines[0] = "I'm sorry, but you can't separate and pipette the liquids if they are already mixed in the tube.";
+        lines[0] = "\nI'm sorry, but you can't separate and pipette the liquids if they are already mixed in the tube.";
 
         SpeechBubble.StartDialoge(lines);
     }
 
     public void pipetting2()
     {
-        lines = new string[5];
+        lines = new string[4];
         lines[0] = "\nNow we can carefully get the DNA out of the tube.";
         lines[1] = "\nHowever, we have MUCH MUCH more DNA here than just the gene we want.";
         lines[2] = "\nWe have a certain method to replicate only the gene we want. It is called PCR.";
-        lines[3] = "\nWe provided you with a special solution that enables this. With this liquid and the DNA mixed, we can put the tube into a special device (a so called PCR-cycler).";
-        lines[4] = "\nThan we will have millions of copies of our gene of interest.";
+        lines[3] = "\nWe provided you with a special solution that enables this. After pipetting we can then use a special device for this!";
+        SpeechBubble.StartDialoge(lines);
+    }
+
+    public void ExplainPCR()
+    {
+        lines = new string[2];
+        lines[0] = "\nWith the liquid and the DNA mixed, we now replicate our Gene in the PCR-cycler).";
+        lines[1] = "\nThan we will have millions of copies of our gene of interest.";
+
         SpeechBubble.StartDialoge(lines);
     }
 
@@ -206,7 +214,7 @@ public class Instructor : MonoBehaviour
     public void PipettingIntoFullTube()
     {
         lines = new string[1];
-        lines[0] = "The tube is already full. You can't add more liquid to it.";
+        lines[0] = "\nThe tube is already full. You can't add more liquid to it.";
 
         SpeechBubble.StartDialoge(lines);
     }
@@ -217,13 +225,13 @@ public class Instructor : MonoBehaviour
         switch (Random.Range(1, 4))
         {
             case 1:
-                lines[0] = "You were really good! You have successfully completed this step.";
+                lines[0] = "\nYou are finished! Nice :)";
                 break;
             case 2:
-                lines[0] = "Very good! :)\nYou learn really fast";
+                lines[0] = "\nVery good! :)\nYou`re done.";
                 break;
             case 3:
-                lines[0] = "You are doing great! Keep it up!";
+                lines[0] = "\nNice. You are finished";
                 break;
         }
 

@@ -97,6 +97,8 @@ public class PipetteController : MonoBehaviour
                         currentTube.fill_tube(content);
                         content = ContentsEnum.Enum.None;
                         update_sprite();
+
+                        currentTube.CheckIfMinigameEnds();
                     }
                     else
                     {

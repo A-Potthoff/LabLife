@@ -68,6 +68,8 @@ public class PCRcycler_Script : MonoBehaviour
                 float duration = 7f;
                 loadingBarScript.Loading(duration);
                 StartCoroutine(finishPCR(duration));
+                Instructor.gameObject.SetActive(true);
+                Instructor.ExplainPCR();
             }
             else if (sampleScript.content == ContentsEnum.Enum.GGA_mix)     // HAS TO BE ADAPTED
             {
