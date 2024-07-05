@@ -1,34 +1,51 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CentrifugeController : MonoBehaviour
 {
     [SerializeField] private bool Centrifuge_is_balanced = false; //check if the centrifuge is balanced
     [SerializeField] private Holder[] holders; // array of holder transforms (1 to 12)
+    [SerializeField] private float rotationDuration = 5f;
+    [SerializeField] private TextMeshProUGUI successText;
     private Instructor Instructor;
+    private logic_manager logic_Manager;
+    private Coroutine rotationCoroutine;
 
     private void Start()
     {
         // Initial balance check
         CheckIfBalanced();
+        logic_Manager = logic_manager.Instance;
         holders = GetComponentsInChildren<Holder>();
         Instructor = Instructor.Instance; // Get the Instructor instance this way because it is a deactivated singleton from a different scene
+
+        // Ensure the success image is initially hidden
+        if (successText != null)
+        {
+            successText.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
     {
         CheckIfBalanced();
         // Spin the centrifuge as long as space is pressed and it is balanced
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) && Centrifuge_is_balanced)
         {
-            if (Centrifuge_is_balanced)
+            if (rotationCoroutine == null)
             {
-                //Spin the centrifuge
-                transform.Rotate(Vector3.forward * 1000 * Time.deltaTime);
+                rotationCoroutine = StartCoroutine(RotateCentrifuge());
             }
-            else
+        }
+        // Stop rotating the centrifuge if E is released
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            if (rotationCoroutine != null)
             {
-                Instructor.gameObject.SetActive(true);
-                Instructor?.FailCentrifuge();
+                StopCoroutine(rotationCoroutine);
+                rotationCoroutine = null;
             }
         }
     }
@@ -49,6 +66,36 @@ public class CentrifugeController : MonoBehaviour
                 // If one is filled and the corresponding one is not, it is not balanced
                 Centrifuge_is_balanced = false;
             }
+        }
+    }
+
+    private IEnumerator RotateCentrifuge()
+    {
+        float elapsedTime = 0f;
+
+        while (Input.GetKey(KeyCode.E) && elapsedTime < rotationDuration)
+        {
+            // Spin the centrifuge
+            transform.Rotate(Vector3.forward * 1000 * Time.deltaTime);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Rotation is done
+        if (elapsedTime >= rotationDuration)
+        {
+            // Trigger text
+            if (successText != null)
+            {
+                successText.gameObject.SetActive(true);
+            }
+
+            // Wait for an additional 10 seconds
+            yield return new WaitForSeconds(10f);
+
+            // Call the next action
+            logic_Manager.return_to_lab();
         }
     }
 }
