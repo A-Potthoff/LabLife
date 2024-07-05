@@ -17,7 +17,7 @@ public class PipettingStation : MonoBehaviour
         originalScale = transform.localScale;
         enlargedScale = originalScale * 1.1f; // Increase scale by 10%
 
-        sampleScript = Sample.GetComponent<Sample_script>();
+        sampleScript = Sample_script.Instance;
         Instructor = Instructor.Instance;
         Player = movement_script.Instance;
     }
@@ -55,6 +55,9 @@ public class PipettingStation : MonoBehaviour
         {
             if (sampleScript.content == ContentsEnum.Enum.Bacteria)
             {
+                Debug.Log((sampleScript.content == ContentsEnum.Enum.Bacteria));
+                Debug.Log((sampleScript.content));
+
                 SceneManager.LoadScene("pipetting_scene_1"); 
 
                 Player.gameObject.SetActive(false);
@@ -66,29 +69,29 @@ public class PipettingStation : MonoBehaviour
             {
                 SceneManager.LoadScene("pipetting_scene_2"); 
                 Player.gameObject.SetActive(false);
-                //Instructor.gameObject.SetActive(true);
-                //Instructor.IntroPipetting();
+                Instructor.gameObject.SetActive(true);
+                Instructor.pipetting2();
             }
             else if (sampleScript.content == ContentsEnum.Enum.PurifiedGene)
             {
                 SceneManager.LoadScene("pipetting_scene_3"); 
                 Player.gameObject.SetActive(false);
-                //Instructor.gameObject.SetActive(true);
-                //Instructor.IntroPipetting();
+                Instructor.gameObject.SetActive(true);
+                Instructor.pipetting3();
             }
             else if (sampleScript.content == ContentsEnum.Enum.Plasmids)
             {
                 SceneManager.LoadScene("pipetting_scene_4"); 
                 Player.gameObject.SetActive(false);
-                //Instructor.gameObject.SetActive(true);
-                //Instructor.IntroPipetting();
+                Instructor.gameObject.SetActive(true);
+                Instructor.pipetting4();
             }
             else if (sampleScript.content == ContentsEnum.Enum.TransformedCells)
             {
                 SceneManager.LoadScene("pipetting_scene_5");
                 Player.gameObject.SetActive(false);
-                //Instructor.gameObject.SetActive(true);
-                //Instructor.IntroPipetting();
+                Instructor.gameObject.SetActive(true);
+                Instructor.pipetting5();
             }
             else
             {

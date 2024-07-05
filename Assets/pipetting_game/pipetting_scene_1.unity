@@ -998,7 +998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fill: 1
-  contents: 04000000
+  contents: 0c000000
   onePipetteEquivalent: 0.5
   aim_of_minigame: 0100000002000000
   sprite_tube_empty: {fileID: 21300000, guid: f7896ab40edcc6a45bde628d33cee6a9, type: 3}

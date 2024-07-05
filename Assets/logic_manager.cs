@@ -32,6 +32,7 @@ public class logic_manager : MonoBehaviour
 
     public void return_to_lab(bool success = true, bool LoadSceneNecessary = true)
     {
+        
         if (success) // check if the minigame was completed successfully
         {
             if (LoadSceneNecessary)
@@ -40,8 +41,6 @@ public class logic_manager : MonoBehaviour
                 Instructor.FinishedMinigame();
 
                 StartCoroutine(EndMinigameAfterDelay());
-
-                SceneManager.LoadScene("main");
             }
 
             // update the sample script
@@ -50,12 +49,17 @@ public class logic_manager : MonoBehaviour
             {
                 case ContentsEnum.Enum.Bacteria:
                     Sample.LysedBacteria();
+                    Instructor.gameObject.SetActive(true);
+                    Instructor.FirstPipettingSuccess();
                     break;
                 case ContentsEnum.Enum.LysedBacteria:
                     Sample.isCentrifuged();
+                    Instructor.gameObject.SetActive(true);
+                    Instructor.CentrifugeSuccess();
                     break;
                 case ContentsEnum.Enum.CellPellet_DNASupernatant:
                     Sample.DNA_PCR_Solution();
+
                     break;
                 case ContentsEnum.Enum.DNA_PCR_Solution:
                     Sample.PurifiedGene();
@@ -86,17 +90,19 @@ public class logic_manager : MonoBehaviour
             SceneManager.LoadScene("main");
             Debug.Log("Returned to lab");
         }
-        // also set the player and sample to active
-        PlayerObject.SetActive(true);
-        SampleObject.SetActive(true);
     }
     
     IEnumerator EndMinigameAfterDelay()
     {
         yield return new WaitForSeconds(2);
         InstructorObject.SetActive(false);
-    }
 
+        SceneManager.LoadScene("main");
+
+        // set the player and sample to active
+        PlayerObject.SetActive(true);
+        SampleObject.SetActive(true);
+    }
 
     void Update()
     {
