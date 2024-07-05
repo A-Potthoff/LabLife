@@ -92,7 +92,7 @@ public class CentrifugeController : MonoBehaviour
             }
 
             // Wait for an additional 10 seconds
-            yield return new WaitForSeconds(10f);
+            //yield return new WaitForSeconds(2);
 
             // Call the next action
             logic_Manager.return_to_lab();
