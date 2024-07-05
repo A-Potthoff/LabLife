@@ -49,6 +49,9 @@ public class logic_manager : MonoBehaviour
         {
             SceneManager.LoadScene("main");
             Debug.Log("Returned to lab");
+
+            PlayerObject.SetActive(true);
+            SampleObject.SetActive(true);
         }
     }
     
