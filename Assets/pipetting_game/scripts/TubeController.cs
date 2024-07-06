@@ -132,6 +132,13 @@ public class TubeController : MonoBehaviour
                 childTransform.localScale = new Vector3(.3f, .3f, 0);
             }
         }
+        else
+        {
+            if (fill == 1)
+            {
+                spriteRenderer.sprite = sprite_tube_filled;
+            }
+        }
 
     }
 

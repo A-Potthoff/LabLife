@@ -61,7 +61,27 @@ public class PCRcycler_Script : MonoBehaviour
         //check if all the necessary conditions are met to start the minigame
         if (Player.isCarrying)
         {
-            if (sampleScript.content == ContentsEnum.Enum.DNA_PCR_Solution)     // HAS TO BE ADAPTED
+            if (sampleScript.content == ContentsEnum.Enum.DNA_PCR_Solution)
+            {
+                // Starting LoadingBar
+                LoadingBar.SetActive(true); // Show the loading bar
+                float duration = 12f;
+                loadingBarScript.Loading(duration);
+                StartCoroutine(finishPCR(duration));
+                Instructor.gameObject.SetActive(true);
+                Instructor.ExplainPCR();
+            }
+            else if (sampleScript.content == ContentsEnum.Enum.GGA_mix)
+            {
+                // Starting LoadingBar
+                LoadingBar.SetActive(true); // Show the loading bar
+                float duration = 12f;
+                loadingBarScript.Loading(duration);
+                StartCoroutine(finishPCR(duration));
+                Instructor.gameObject.SetActive(true);
+                Instructor.ExplainGGA();
+            }
+            else if (sampleScript.content == ContentsEnum.Enum.Plasmids_Cells)
             {
                 // Starting LoadingBar
                 LoadingBar.SetActive(true); // Show the loading bar
@@ -69,23 +89,7 @@ public class PCRcycler_Script : MonoBehaviour
                 loadingBarScript.Loading(duration);
                 StartCoroutine(finishPCR(duration));
                 Instructor.gameObject.SetActive(true);
-                Instructor.ExplainPCR();
-            }
-            else if (sampleScript.content == ContentsEnum.Enum.GGA_mix)     // HAS TO BE ADAPTED
-            {
-                // Starting LoadingBar
-                LoadingBar.SetActive(true); // Show the loading bar
-                float duration = 7f;
-                loadingBarScript.Loading(duration);
-                StartCoroutine(finishPCR(duration));
-            }
-            else if (sampleScript.content == ContentsEnum.Enum.Plasmids_Cells)     // HAS TO BE ADAPTED
-            {
-                // Starting LoadingBar
-                LoadingBar.SetActive(true); // Show the loading bar
-                float duration = 7f;
-                loadingBarScript.Loading(duration);
-                StartCoroutine(finishPCR(duration));
+                Instructor.ExplainHeatShock();
             }
             else
             {

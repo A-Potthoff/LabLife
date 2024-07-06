@@ -1438,7 +1438,7 @@ MonoBehaviour:
   aim_of_minigame: 0f000000
   is_PetriDish: 1
   sprite_tube_empty: {fileID: 21300000, guid: f7896ab40edcc6a45bde628d33cee6a9, type: 3}
-  sprite_tube_filled: {fileID: 21300000, guid: bddd08ab6611a0343ac3715ad1a09687, type: 3}
+  sprite_tube_filled: {fileID: 21300000, guid: 4e757af2f17e1674e8dec854308b674d, type: 3}
   sprite_tube_filled_033: {fileID: 21300000, guid: daf2f698bcc702846990c6a1c6a3c6ab, type: 3}
   sprite_tube_filled_05: {fileID: 21300000, guid: f97b4277607d52049a00706adc02fda5, type: 3}
   sprite_tube_filled_066: {fileID: 21300000, guid: c449e734f245b564ca3cf43b57c587e2, type: 3}
