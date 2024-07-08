@@ -49,6 +49,10 @@ public class SpeechBubble : MonoBehaviour
             StopCoroutine(typingCoroutine);
         }
 
+        //Debugging Purposes only
+        //Debug.Log("First line:" + this.lines[0]);
+        //Debug.Log("Last  line:" + this.lines[this.lines.Length - 1]);
+
         // Start the typing coroutine
         typingCoroutine = StartCoroutine(TypeLine());
     }
