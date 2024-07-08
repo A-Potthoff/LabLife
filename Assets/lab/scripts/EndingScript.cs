@@ -70,7 +70,7 @@ public class EndingScript : MonoBehaviour
 
         finalBacteria.SetActive(false);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         TimeTextbackground.gameObject.SetActive(true);
         TimeText.gameObject.SetActive(true);
@@ -81,14 +81,16 @@ public class EndingScript : MonoBehaviour
         TimeText.gameObject.SetActive(false);
         Instructor.gameObject.SetActive(true);
         Instructor.Outro1();
+
         Paper.enabled = true;
 
         yield return new WaitUntil(() => !Instructor.SpeechBubble.isActive);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Paper.enabled = false;
-        }
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+
+        Paper.enabled = false;
 
         yield return new WaitUntil(() => !Paper.enabled);
 

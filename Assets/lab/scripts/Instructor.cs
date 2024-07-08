@@ -148,7 +148,7 @@ public class Instructor : MonoBehaviour
     {
 
         lines = new string[1];
-        lines[0] = "\nYou have to centrifuge the tubes longer to separate the DNA from the cell debris.";
+        lines[0] = "\nYou have to centrifuge the tubes longer to separate the DNA from the cell fragments.";
 
         SpeechBubble.StartDialoge(lines);
     }
@@ -260,8 +260,8 @@ public class Instructor : MonoBehaviour
     {
         lines = new string[5];
         lines[0] = "Your results look great! Take a look at all those growing and glowing colonies you got there. Those are truly good results!";
-        lines[1] = "Thank you for your help with this project, now your colleagues can use this modified bacteria for further research.";
-        lines[2] = "We want to publish the results of our current work with these special enzymes that can break down plastic.";
+        lines[1] = "Thank you for your help with this project, now your colleagues can use these modified bacteria for further research.";
+        lines[2] = "\nWe want to publish the results of our current work with these special enzymes.";
         lines[3] = "And because your results are part of our work, we want to add them to our publication. I will get back to you when we have published our article.";
         lines[4] = "\nGood luck with your master thesis!";
 

@@ -120,7 +120,7 @@ public class logic_manager : MonoBehaviour
         }
     }
 
-    void Update()
+    /*void Update()
     {
         //when t, r, c is pressed  ---- DEBUGGING PURPOSES
         
@@ -142,6 +142,6 @@ public class logic_manager : MonoBehaviour
             EndingScript.StartOutro();
         }
 
-    }
+    }*/
 
 }

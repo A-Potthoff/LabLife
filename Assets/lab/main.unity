@@ -2516,7 +2516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1ea6e06c58dd8428c0012790f4498b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 3.5
   carryPosition: {fileID: 787583082}
   Sample: {fileID: 1416887981}
   isCarrying: 0
