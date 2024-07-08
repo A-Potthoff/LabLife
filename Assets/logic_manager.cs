@@ -71,7 +71,7 @@ public class logic_manager : MonoBehaviour
 
     IEnumerator UpdateSampleAndDoInstructor()
     {
-        yield return new WaitForSeconds(2.1f);
+        yield return new WaitForSeconds(3.1f);
 
         // update the sample script
 
@@ -107,7 +107,7 @@ public class logic_manager : MonoBehaviour
                 break;
             case ContentsEnum.Enum.TransformedCells:
                 Sample.PetriDish();
-                yield return new WaitForSeconds(2.1f);
+                yield return new WaitForSeconds(3.1f);
                 if (EndingScript == null)
                 {
                     Debug.Log("Ending not found");
