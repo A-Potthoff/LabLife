@@ -112,7 +112,6 @@ public class logic_manager : MonoBehaviour
                 {
                     Debug.Log("Ending not found");
                 }
-                Destroy(Instructor.gameObject);
                 EndingScript.StartOutro();
                 break;
             case ContentsEnum.Enum.PetriDish:

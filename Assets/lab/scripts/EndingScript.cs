@@ -93,10 +93,13 @@ public class EndingScript : MonoBehaviour
         Instructor.gameObject.SetActive(true);
         Instructor.Outro2();
 
-        yield return new WaitUntil(() => !Instructor.SpeechBubble.isActive && Input.GetKeyDown(KeyCode.Space));
+        yield return new WaitUntil(() => !Instructor.SpeechBubble.isActive);
+
+        Destroy(Instructor.gameObject);
 
         FeedbackScreen.SetActive(true);
         FeedbackText.gameObject.SetActive(true);
         Button.gameObject.SetActive(true);
+
     }
 }
