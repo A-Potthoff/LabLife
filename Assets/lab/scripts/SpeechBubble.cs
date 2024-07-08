@@ -12,6 +12,7 @@ public class SpeechBubble : MonoBehaviour
     private int index;
     private Instructor Instructor;
     private Coroutine typingCoroutine;
+    public bool isActive; // for OutroScript
 
     //----------------- defining the lines of text ------------------------------------------------------------------
 
@@ -87,6 +88,7 @@ public class SpeechBubble : MonoBehaviour
             textComponent.text = string.Empty;
             //deactivate the speech bubble when the dialoge is over
             Instructor.gameObject.SetActive(false);
+            isActive = false;
         }
     }
 }

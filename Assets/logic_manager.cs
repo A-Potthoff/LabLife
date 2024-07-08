@@ -13,6 +13,9 @@ public class logic_manager : MonoBehaviour
     [SerializeField] private GameObject InstructorObject;
     private Sample_script Sample;
     private Instructor Instructor;
+    [SerializeField] private GameObject Ending;
+    private EndingScript EndingScript;
+    
     void Start()
     {
         // Make sure that the object is UNIQUE and not destroyed when loading a new scene
@@ -23,6 +26,7 @@ public class logic_manager : MonoBehaviour
 
             Sample = Sample_script.Instance;
             Instructor = Instructor.Instance;
+            EndingScript = Ending.GetComponent<EndingScript>();
         }
         else
         {
@@ -106,9 +110,15 @@ public class logic_manager : MonoBehaviour
                 break;
             case ContentsEnum.Enum.TransformedCells:
                 Sample.PetriDish();
+                yield return new WaitForSeconds(2.1f);
+                if (EndingScript == null)
+                {
+                    Debug.Log("Ending not found");
+                }
+                EndingScript.StartOutro();
                 break;
             case ContentsEnum.Enum.PetriDish:
-                // end of the game
+                
                 break;
         }
     }
@@ -125,6 +135,16 @@ public class logic_manager : MonoBehaviour
         {
             return_to_lab();
         }
+        if ((Input.GetKeyDown(KeyCode.M)))
+        {
+            Sample.PetriDish();
+            if (EndingScript == null)
+            {
+                Debug.Log("Ending not found");
+            }
+            EndingScript.StartOutro();
+        }
+
     }
 
 }

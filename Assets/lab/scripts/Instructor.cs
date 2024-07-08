@@ -6,7 +6,7 @@ public class Instructor : MonoBehaviour
     public static Instructor Instance;
     private string[] lines;
     private SpriteRenderer spriteRenderer;
-    [SerializeField] private SpeechBubble SpeechBubble;
+    [SerializeField] public SpeechBubble SpeechBubble;
 
     void Awake()
     {
@@ -35,13 +35,13 @@ public class Instructor : MonoBehaviour
         lines = new string[9];
         lines[0] = "Hey there!\nI'm Eni and I am happy to welcome you to our lab!\n[press 'SPACE' to continue]";
         lines[1] = "We are incredibly happy you decided to pursue your Master here!\nWe also already have the first important task for you!";
-        lines[2] = "\nNot long ago researchers found a new plastic degrading bacterium inside the ocean!";
-        lines[3] = "\nHowever, they grow really really slow, which makes it difficult to work them in the lab.";
-        lines[4] = "\nTherefore we wanna take the gene that is responsible for this degradation out of the bactierum ...";
+        lines[2] = "\nRecently, researchers found a new plastic degrading bacterium inside the ocean!";
+        lines[3] = "\nHowever, they grow really really slowly, which makes it difficult to work with them in the lab.";
+        lines[4] = "Therefore we wanna take the gene that is responsible for this degradation out of the bacterium ...";
         lines[5] = "...and set it into E.coli. E.coli are fast growing bacteria, so working with them is easy. Also they are well studied already, which is a big benefit for us.";
         lines[6] = "This way we can let the bacteria produce the enzyme in large amounts and hopefully use it to break down plastic!";
         lines[7] = "\nSo let's get started!";
-        lines[8] = "\nYou can pick up the sample by pressing 'E' when you are close to it.";
+        lines[8] = "You can pick up the sample by pressing 'E' when you are close to it. To start working with material on the work benches, you can click on it when you are standing in front of it.";
 
         SpeechBubble.StartDialoge(lines);
     }
@@ -95,8 +95,8 @@ public class Instructor : MonoBehaviour
     public void IntroPipetting()
     {
         lines = new string[3];
-        lines[0] = "\nHere we have our bacteria in the tube. But we want to get the Gene out of them.";
-        lines[1] = "\nTherefore we have our special lysing solution that can break the cells open to release the DNA.";
+        lines[0] = "\nHere we have our bacteria in the tube. But we want to get the gene out of them.";
+        lines[1] = "\nTherefore we have our special solution that can break the cells open to release the DNA.";
         lines[2] = "\nYou can drag the pipette with your mouse and pipette with SPACE.";
 
         SpeechBubble.StartDialoge(lines);
@@ -147,7 +147,7 @@ public class Instructor : MonoBehaviour
     public void CentrifugeSuccess()
     {
         lines = new string[1];
-        lines[0] = "\nGreat job! Now we can pipette out the now separated DNA.";
+        lines[0] = "\nGreat job! In the next step, we can pipette out the now separated DNA.";
 
         SpeechBubble.StartDialoge(lines);
     }
@@ -166,16 +166,16 @@ public class Instructor : MonoBehaviour
         lines[0] = "\nNow we can carefully get the DNA out of the tube.";
         lines[1] = "\nHowever, we have MUCH MUCH more DNA here than just the gene we want.";
         lines[2] = "\nWe have a certain method to replicate only the gene we want. It is called PCR.";
-        lines[3] = "\nWe provided you with a special solution that enables this. After pipetting we can then use a special device for this!";
+        lines[3] = "\nWe provided you with a special solution that enables this. After pipetting we can then use a another device for this!";
         SpeechBubble.StartDialoge(lines);
     }
 
     public void ExplainPCR()
     {
         lines = new string[3];
-        lines[0] = "\nWith the liquid and the DNA mixed, we now replicate our gene in the PCR-cycler).";
+        lines[0] = "\nWith the liquid and the DNA mixed, we now replicate our gene in the PCR-cycler.";
         lines[1] = "\nWhat this PCR-cycler now does is to heat up the liquid and then cool it down again.";
-        lines[2] = "Through complex interactions between the genome and the other solutions we will then have millions of copies of our gene of interest.";
+        lines[2] = "Through complex interactions between the DNA extract and the other solution we will then have millions of copies of our gene of interest.";
 
         SpeechBubble.StartDialoge(lines);
     }
@@ -185,7 +185,7 @@ public class Instructor : MonoBehaviour
         lines = new string[5];
         lines[0] = "\nOur gene is now replicated.";
         lines[1] = "\nBut on its own we cannot simply put it into our superhero E. coli. I would simply be broken down.";
-        lines[2] = "\nTherefore we incorporate the gene into a so called plasmid. This way it stays active.";
+        lines[2] = "\nTherefore we insert the gene into a so called plasmid. This way it stays active.";
         lines[3] = "\nAlso this plasmid produces a glowing substance. This way we can later easily see if our work payed out :).";
         lines[4] = "The process is supprisingly similar to the PCR you did before. But here we use other molecular mechanisms that make the two ingredients fuse together.";
 
@@ -243,6 +243,34 @@ public class Instructor : MonoBehaviour
                 lines[0] = "\nNice. You are finished";
                 break;
         }
+
+        SpeechBubble.StartDialoge(lines);
+    }
+
+    public void finishedGame()
+    {
+        lines = new string[4];
+        lines[0] = "Your results look great! Thank you for your help with this project, now your colleagues can use this for further research.";
+        lines[1] = "We want to publish the results of our current work with these special enzymes that can break down plastic.";
+        lines[2] = "And because your results are part of our work, we want to add them to our publication. I will inform you when we have published our article.";
+        lines[3] = "\nGood luck with your master thesis!";
+
+        SpeechBubble.StartDialoge(lines);
+    }
+
+    public void Outro1()
+    {
+        lines = new string[1];
+        lines[0] = "Hey, I got great news! Our published article became very popular and a lot of other scientists could use our findings for their research. Just look at the number of citations!";
+
+        SpeechBubble.StartDialoge(lines);
+    }
+
+    public void Outro2()
+    {
+        lines = new string[2];
+        lines[0] = "I heard your master thesis also went well, congradulations!\nYour next step will be your PhD phase right? Would you like to continue it in our lab?";
+        lines[1] = "No worries, you can think about it and come to my office when you have decided.";
 
         SpeechBubble.StartDialoge(lines);
     }
