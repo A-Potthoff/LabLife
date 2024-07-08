@@ -32,12 +32,21 @@ public class CentrifugeController : MonoBehaviour
     {
         CheckIfBalanced();
         // Spin the centrifuge as long as space is pressed and it is balanced
-        if (Input.GetKey(KeyCode.E) && Centrifuge_is_balanced)
+        if (Input.GetKey(KeyCode.E))
         {
-            if (rotationCoroutine == null)
+            if (Centrifuge_is_balanced)
             {
-                rotationCoroutine = StartCoroutine(RotateCentrifuge());
+                if (rotationCoroutine == null)
+                {
+                    rotationCoroutine = StartCoroutine(RotateCentrifuge());
+                }
             }
+            else
+            {
+                Instructor.gameObject.SetActive(true);
+                Instructor.FailCentrifuge();
+            }
+            
         }
         // Stop rotating the centrifuge if E is released
         if (Input.GetKeyUp(KeyCode.E))
@@ -46,6 +55,9 @@ public class CentrifugeController : MonoBehaviour
             {
                 StopCoroutine(rotationCoroutine);
                 rotationCoroutine = null;
+
+                Instructor.gameObject.SetActive(true);
+                Instructor.CentrifugeLonger();
             }
         }
     }

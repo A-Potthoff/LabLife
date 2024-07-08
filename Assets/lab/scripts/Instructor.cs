@@ -144,6 +144,15 @@ public class Instructor : MonoBehaviour
         SpeechBubble.StartDialoge(lines);
     }
 
+    public void CentrifugeLonger()
+    {
+
+        lines = new string[1];
+        lines[0] = "\nYou have to centrifuge the tubes longer to separate the DNA from the cell debris.";
+
+        SpeechBubble.StartDialoge(lines);
+    }
+
     public void CentrifugeSuccess()
     {
         lines = new string[1];
@@ -222,7 +231,7 @@ public class Instructor : MonoBehaviour
 
     public void pipetting5()
     {
-        lines = new string[4];
+        lines = new string[1];
         lines[0] = "\nVery last step: put some bacteria from the tube to the Petri Dish!";
 
         SpeechBubble.StartDialoge(lines);
