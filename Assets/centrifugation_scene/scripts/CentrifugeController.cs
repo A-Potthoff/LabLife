@@ -12,6 +12,7 @@ public class CentrifugeController : MonoBehaviour
     private Instructor Instructor;
     private logic_manager logic_Manager;
     private Coroutine rotationCoroutine;
+    private bool GameFinished = false;
 
     private void Start()
     {
@@ -43,8 +44,11 @@ public class CentrifugeController : MonoBehaviour
             }
             else
             {
-                Instructor.gameObject.SetActive(true);
-                Instructor.FailCentrifuge();
+                if (!GameFinished)
+                {
+                    Instructor.gameObject.SetActive(true);
+                    Instructor.FailCentrifuge();
+                }
             }
             
         }
@@ -56,8 +60,11 @@ public class CentrifugeController : MonoBehaviour
                 StopCoroutine(rotationCoroutine);
                 rotationCoroutine = null;
 
-                Instructor.gameObject.SetActive(true);
-                Instructor.CentrifugeLonger();
+                if (!GameFinished)
+                {
+                    Instructor.gameObject.SetActive(true);
+                    Instructor.CentrifugeLonger();
+                }
             }
         }
     }
@@ -101,6 +108,7 @@ public class CentrifugeController : MonoBehaviour
             if (successText != null)
             {
                 successText.gameObject.SetActive(true);
+                GameFinished = true;
             }
 
             // Wait for an additional 10 seconds

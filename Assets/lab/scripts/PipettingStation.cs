@@ -49,6 +49,11 @@ public class PipettingStation : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        
+    }
+
     public void Start_minigame()
     {
         if (Player.isCarrying)//check if all the necessary conditions are met to start the minigame

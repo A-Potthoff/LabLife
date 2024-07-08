@@ -97,7 +97,7 @@ public class Instructor : MonoBehaviour
         lines = new string[3];
         lines[0] = "\nHere we have our bacteria in the tube. But we want to get the gene out of them.";
         lines[1] = "\nThat's why we have our special solution that can break open the cells to release the DNA.";
-        lines[2] = "\nYou can drag the pipette with your mouse and pipette with SPACE.";
+        lines[2] = "\nYou can drag the pipette with your mouse and use it with SPACE.";
 
         SpeechBubble.StartDialoge(lines);
     }
@@ -175,7 +175,7 @@ public class Instructor : MonoBehaviour
         lines[0] = "\nNow we can carefully get the DNA out of the tube.";
         lines[1] = "\nHowever, we have MUCH MUCH more DNA here than just the gene we want.";
         lines[2] = "\nWe have a certain method to replicate only the gene we want. It is called PCR.";
-        lines[3] = "We provided you with a special solution that enables this. After pipetting we can then use a another device for this!";
+        lines[3] = "We provided you with a special solution that enables this. After pipetting we can then use another device for this!";
         SpeechBubble.StartDialoge(lines);
     }
 
@@ -205,7 +205,7 @@ public class Instructor : MonoBehaviour
     {
         lines = new string[2];
         lines[0] = "\nWhat you are doing now is what an expert would call 'Golden Gate Assembly'. Scientists like fancy terms!";
-        lines[1] = "\nThe resulting plasmid will be now carry the gene and sustain it inside the new cell.";
+        lines[1] = "\nThe resulting plasmid now carries the gene and sustain it inside the new cell.";
 
         SpeechBubble.StartDialoge(lines);
     }
