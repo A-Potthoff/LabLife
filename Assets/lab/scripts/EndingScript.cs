@@ -13,6 +13,7 @@ public class EndingScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TimeText;
     [SerializeField] private GameObject finalBacteria;
     [SerializeField] private GameObject FeedbackScreen;
+    [SerializeField] private GameObject TimeTextbackground;
     [SerializeField] private TextMeshProUGUI FeedbackText;
     [SerializeField] private Button Button;
 
@@ -39,6 +40,7 @@ public class EndingScript : MonoBehaviour
         TimeText.gameObject.SetActive(false);
         FeedbackScreen.SetActive(false);
         FeedbackText.gameObject.SetActive(false);
+        TimeTextbackground.gameObject.SetActive(false);
         Button.gameObject.SetActive(false);
 
         if (TimeText == null)
@@ -70,12 +72,12 @@ public class EndingScript : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        FeedbackScreen.SetActive(true);
+        TimeTextbackground.gameObject.SetActive(true);
         TimeText.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(4.5f);
 
-        FeedbackScreen.SetActive(false);
+        TimeTextbackground.gameObject.SetActive(false);
         TimeText.gameObject.SetActive(false);
         Instructor.gameObject.SetActive(true);
         Instructor.Outro1();
