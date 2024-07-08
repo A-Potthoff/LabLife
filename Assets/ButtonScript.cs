@@ -8,5 +8,4 @@ public class ButtonScript : MonoBehaviour
     {
         Application.OpenURL(url);
     }
-
 }

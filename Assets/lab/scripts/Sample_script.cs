@@ -134,6 +134,7 @@ public class Sample_script : MonoBehaviour{
     {
         spriteRenderer.sprite = sp_petri_dish;
         content = ContentsEnum.Enum.PetriDish;
+        SymbolRenderer.sprite = null;
     }
 
 

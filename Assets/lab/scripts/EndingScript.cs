@@ -15,7 +15,7 @@ public class EndingScript : MonoBehaviour
     [SerializeField] private GameObject FeedbackScreen;
     [SerializeField] private TextMeshProUGUI FeedbackText;
     [SerializeField] private Button Button;
-    private float TextDuration = 10f;
+    private float TextDuration = 2f;
 
     void Awake()
     {
@@ -39,6 +39,11 @@ public class EndingScript : MonoBehaviour
         Paper.enabled = false;
         TimeText.gameObject.SetActive(false);
         FeedbackScreen.SetActive(false);
+
+        if(TimeText == null)
+        {
+            Debug.LogError("TimeText is null");
+        }
     }
 
     public void StartOutro()
@@ -52,11 +57,18 @@ public class EndingScript : MonoBehaviour
         Instructor.gameObject.SetActive(true);
         Instructor.finishedGame();
 
-        yield return new WaitUntil(() => !Instructor.SpeechBubble.isActive && Input.GetKeyDown(KeyCode.Space));
+        //wait for the first speech bubble to disappear
+        //yield return new WaitUntil(() => !Instructor.SpeechBubble.isActive && Input.GetKeyDown(KeyCode.Space));
+        //yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.Space));
 
-        yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.Space));
+        yield return new WaitForSeconds(1); //give the system time to activate the Instructor
+
+        yield return new WaitUntil(() => !Instructor.SpeechBubble.isActive);
 
         finalBacteria.SetActive(false);
+
+        yield return new WaitForSeconds(TextDuration);
+
         TimeText.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(TextDuration);
@@ -66,7 +78,7 @@ public class EndingScript : MonoBehaviour
         Instructor.Outro1();
         Paper.enabled = true;
 
-        yield return new WaitUntil(() => !Instructor.SpeechBubble.isActive && Input.GetKeyDown(KeyCode.Space));
+        yield return new WaitUntil(() => !Instructor.SpeechBubble.isActive);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -84,6 +96,4 @@ public class EndingScript : MonoBehaviour
         FeedbackText.gameObject.SetActive(true);
         Button.gameObject.SetActive(true);
     }
-
-
 }

@@ -249,11 +249,12 @@ public class Instructor : MonoBehaviour
 
     public void finishedGame()
     {
-        lines = new string[4];
-        lines[0] = "Your results look great! Thank you for your help with this project, now your colleagues can use this for further research.";
-        lines[1] = "We want to publish the results of our current work with these special enzymes that can break down plastic.";
-        lines[2] = "And because your results are part of our work, we want to add them to our publication. I will inform you when we have published our article.";
-        lines[3] = "\nGood luck with your master thesis!";
+        lines = new string[5];
+        lines[0] = "Your results look great! Take a look at all those growing and glowing colonies you got there. Those are truly good results!";
+        lines[1] = "Thank you for your help with this project, now your colleagues can use this new strain for further research.";
+        lines[2] = "We want to publish the results of our current work with these special enzymes that can break down plastic.";
+        lines[3] = "And because your results are part of our work, we want to add them to our publication. I will inform you when we have published our article.";
+        lines[4] = "\nGood luck with your master thesis!";
 
         SpeechBubble.StartDialoge(lines);
     }
