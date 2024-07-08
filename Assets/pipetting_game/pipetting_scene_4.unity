@@ -778,6 +778,7 @@ MonoBehaviour:
   contents: 
   onePipetteEquivalent: 0.5
   aim_of_minigame: 0f0000000c000000
+  is_PetriDish: 0
   sprite_tube_empty: {fileID: 21300000, guid: f7896ab40edcc6a45bde628d33cee6a9, type: 3}
   sprite_tube_filled: {fileID: 21300000, guid: bddd08ab6611a0343ac3715ad1a09687, type: 3}
   sprite_tube_filled_033: {fileID: 21300000, guid: daf2f698bcc702846990c6a1c6a3c6ab, type: 3}
@@ -1179,6 +1180,7 @@ MonoBehaviour:
   contents: 0c000000
   onePipetteEquivalent: 0.5
   aim_of_minigame: 0f0000000c000000
+  is_PetriDish: 0
   sprite_tube_empty: {fileID: 21300000, guid: f7896ab40edcc6a45bde628d33cee6a9, type: 3}
   sprite_tube_filled: {fileID: 21300000, guid: bddd08ab6611a0343ac3715ad1a09687, type: 3}
   sprite_tube_filled_033: {fileID: 21300000, guid: daf2f698bcc702846990c6a1c6a3c6ab, type: 3}
@@ -1776,6 +1778,7 @@ MonoBehaviour:
   contents: 0f000000
   onePipetteEquivalent: 0.5
   aim_of_minigame: 0f0000000c000000
+  is_PetriDish: 0
   sprite_tube_empty: {fileID: 21300000, guid: f7896ab40edcc6a45bde628d33cee6a9, type: 3}
   sprite_tube_filled: {fileID: 21300000, guid: bddd08ab6611a0343ac3715ad1a09687, type: 3}
   sprite_tube_filled_033: {fileID: 21300000, guid: daf2f698bcc702846990c6a1c6a3c6ab, type: 3}
@@ -2064,6 +2067,51 @@ PolygonCollider2D:
       - {x: 2.1961732, y: -1.9509134}
       - {x: 2.3306875, y: 2.9227853}
   m_UseDelaunayMesh: 0
+--- !u!1 &1929284677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1929284679}
+  - component: {fileID: 1929284678}
+  m_Layer: 0
+  m_Name: CameraController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1929284678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929284677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f178d70983de9e4096f3432009dbe79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetAspectRatio: 1.777778
+--- !u!4 &1929284679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929284677}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.15354995, y: -0.324136, z: 0.032640185}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1956963595
 GameObject:
   m_ObjectHideFlags: 0
@@ -2395,3 +2443,4 @@ SceneRoots:
   - {fileID: 1474864129}
   - {fileID: 836709999}
   - {fileID: 1245707997}
+  - {fileID: 1929284679}

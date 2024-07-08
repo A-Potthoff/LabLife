@@ -123,7 +123,7 @@ public class Instructor : MonoBehaviour
     public void IntroCentrifuge()
     {
         lines = new string[4];
-        lines[0] = "\nThe cell debris and the DNA have different weights (or rather densities). We can use this to our advantage!";
+        lines[0] = "\nThe cell fragments and the DNA have different weights (or rather densities). We can use this to our advantage!";
         lines[1] = "\nUsing the centirfuge, we can collect all the heavy stuff at the bottom of our tubes. Our DNA will then be at the top of the tube.";
         lines[2] = "But be careful when using the centrifuge...\nIf the centrifuge is not balanced, an imbalance occurs and the centrifuge can be severely damaged.";
         lines[3] = "\nOnce you have balanced the centrifuge, you can start it by pressing 'E'.";
