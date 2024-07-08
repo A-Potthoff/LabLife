@@ -778,6 +778,7 @@ MonoBehaviour:
   contents: 
   onePipetteEquivalent: 0.5
   aim_of_minigame: 0100000002000000
+  is_PetriDish: 0
   sprite_tube_empty: {fileID: 21300000, guid: f7896ab40edcc6a45bde628d33cee6a9, type: 3}
   sprite_tube_filled: {fileID: 21300000, guid: bddd08ab6611a0343ac3715ad1a09687, type: 3}
   sprite_tube_filled_033: {fileID: 21300000, guid: daf2f698bcc702846990c6a1c6a3c6ab, type: 3}
@@ -1179,6 +1180,7 @@ MonoBehaviour:
   contents: 02000000
   onePipetteEquivalent: 0.5
   aim_of_minigame: 0100000002000000
+  is_PetriDish: 0
   sprite_tube_empty: {fileID: 21300000, guid: f7896ab40edcc6a45bde628d33cee6a9, type: 3}
   sprite_tube_filled: {fileID: 21300000, guid: bddd08ab6611a0343ac3715ad1a09687, type: 3}
   sprite_tube_filled_033: {fileID: 21300000, guid: daf2f698bcc702846990c6a1c6a3c6ab, type: 3}
@@ -1369,7 +1371,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1288629622
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1776,6 +1778,7 @@ MonoBehaviour:
   contents: 01000000
   onePipetteEquivalent: 0.5
   aim_of_minigame: 0100000002000000
+  is_PetriDish: 0
   sprite_tube_empty: {fileID: 21300000, guid: f7896ab40edcc6a45bde628d33cee6a9, type: 3}
   sprite_tube_filled: {fileID: 21300000, guid: bddd08ab6611a0343ac3715ad1a09687, type: 3}
   sprite_tube_filled_033: {fileID: 21300000, guid: daf2f698bcc702846990c6a1c6a3c6ab, type: 3}

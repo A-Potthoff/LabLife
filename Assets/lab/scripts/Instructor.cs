@@ -193,7 +193,7 @@ public class Instructor : MonoBehaviour
     {
         lines = new string[5];
         lines[0] = "\nOur gene is now replicated.";
-        lines[1] = "\nBut on its own we cannot simply put it into our superhero E. coli. I would simply be broken down.";
+        lines[1] = "\nBut on its own we cannot simply put it into our 'superhero' E. coli. I would simply be broken down.";
         lines[2] = "\nTherefore we insert the gene into a so called plasmid. This way it stays active.";
         lines[3] = "\nAlso this plasmid produces a glowing substance. This way we can later easily see if our work payed out :).";
         lines[4] = "The process is supprisingly similar to the PCR you did before. But here we use other molecular mechanisms that make the two ingredients fuse together.";

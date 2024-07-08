@@ -10,7 +10,6 @@ public class PCRcycler_Script : MonoBehaviour
     private bool isPlayerInContact = false;
     [SerializeField] private GameObject LoadingBar;
     private LoadingBar_Script loadingBarScript;
-
     private Sample_script sampleScript;
     private movement_script Player;
     private Instructor Instructor;
@@ -105,7 +104,9 @@ public class PCRcycler_Script : MonoBehaviour
     }
     private IEnumerator finishPCR(float duration)
     {
+        sampleScript.gameObject.SetActive(false);
         yield return new WaitForSeconds(duration);
         LogicManager.return_to_lab(true, false);
+        sampleScript.gameObject.SetActive(true);
     }
 }

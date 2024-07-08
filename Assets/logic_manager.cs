@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -91,7 +89,6 @@ public class logic_manager : MonoBehaviour
                 break;
             case ContentsEnum.Enum.CellPellet_DNASupernatant:
                 Sample.DNA_PCR_Solution();
-
                 break;
             case ContentsEnum.Enum.DNA_PCR_Solution:
                 Sample.PurifiedGene();
