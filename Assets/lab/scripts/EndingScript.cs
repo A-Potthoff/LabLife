@@ -15,7 +15,6 @@ public class EndingScript : MonoBehaviour
     [SerializeField] private GameObject FeedbackScreen;
     [SerializeField] private TextMeshProUGUI FeedbackText;
     [SerializeField] private Button Button;
-    private float TextDuration = 2f;
 
     void Awake()
     {
@@ -67,11 +66,11 @@ public class EndingScript : MonoBehaviour
 
         finalBacteria.SetActive(false);
 
-        yield return new WaitForSeconds(TextDuration);
+        yield return new WaitForSeconds(2.5f);
 
         TimeText.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(TextDuration);
+        yield return new WaitForSeconds(3.5f);
 
         TimeText.gameObject.SetActive(false);
         Instructor.gameObject.SetActive(true);

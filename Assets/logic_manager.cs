@@ -59,7 +59,7 @@ public class logic_manager : MonoBehaviour
     
     IEnumerator EndMinigameAfterDelay()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3f);
         InstructorObject.SetActive(false);
 
         SceneManager.LoadScene("main");
@@ -112,6 +112,7 @@ public class logic_manager : MonoBehaviour
                 {
                     Debug.Log("Ending not found");
                 }
+                Destroy(Instructor.gameObject);
                 EndingScript.StartOutro();
                 break;
             case ContentsEnum.Enum.PetriDish:
