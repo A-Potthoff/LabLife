@@ -38,8 +38,10 @@ public class EndingScript : MonoBehaviour
         Paper.enabled = false;
         TimeText.gameObject.SetActive(false);
         FeedbackScreen.SetActive(false);
+        FeedbackText.gameObject.SetActive(false);
+        Button.gameObject.SetActive(false);
 
-        if(TimeText == null)
+        if (TimeText == null)
         {
             Debug.LogError("TimeText is null");
         }
@@ -66,12 +68,14 @@ public class EndingScript : MonoBehaviour
 
         finalBacteria.SetActive(false);
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
 
+        FeedbackScreen.SetActive(true);
         TimeText.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(4.5f);
 
+        FeedbackScreen.SetActive(false);
         TimeText.gameObject.SetActive(false);
         Instructor.gameObject.SetActive(true);
         Instructor.Outro1();

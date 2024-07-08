@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
 {
-    public void OpenSurvey(string url = "https://docs.google.com/forms/d/e/1FAIpQLSdTjuDezu1C8yJS58AH-wKcz99i1xsibDpVfkekhRnJlBqnmA/viewform?usp=sf_link")
+    public void OpenSurvey()
     {
-        Application.OpenURL(url);
+        Application.OpenURL("https://forms.gle/T9BB66eSGoLx65Fk8");
     }
 }
