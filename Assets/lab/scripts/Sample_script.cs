@@ -31,6 +31,7 @@ public class Sample_script : MonoBehaviour{
     private SpriteRenderer SymbolRenderer;
     private Transform symbolTransform;
     public static Sample_script Instance;
+    private Instructor Instructor;
 
     void Awake()
     {
@@ -52,6 +53,7 @@ public class Sample_script : MonoBehaviour{
         content = ContentsEnum.Enum.Bacteria;
         SymbolRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>(); //to change the sprites of the symbol
         symbolTransform = transform.GetChild(0).GetComponent<Transform>();
+        Instructor = Instructor.Instance;
     }
 
     public void Pickup(Transform carryPosition)
@@ -59,6 +61,8 @@ public class Sample_script : MonoBehaviour{
         transform.SetParent(carryPosition);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
+        Instructor.gameObject.SetActive(true);
+        Instructor.SamplePickedUp();
     }
 
     public void Drop()

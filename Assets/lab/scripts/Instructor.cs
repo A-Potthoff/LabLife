@@ -1,4 +1,6 @@
 using System.Xml.Serialization;
+using Unity.Burst.Intrinsics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Instructor : MonoBehaviour
@@ -7,6 +9,7 @@ public class Instructor : MonoBehaviour
     private string[] lines;
     private SpriteRenderer spriteRenderer;
     [SerializeField] public SpeechBubble SpeechBubble;
+    bool pickedUpFirstTime = false;
 
     void Awake()
     {
@@ -41,9 +44,21 @@ public class Instructor : MonoBehaviour
         lines[5] = "...and set it into E.coli. E.coli are fast growing bacteria, so working with them is easy. They are also already well studied, which is a big benefit for us.";
         lines[6] = "This way we can let the bacteria produce the enzyme in large amounts and hopefully use it to break down plastic!";
         lines[7] = "\nSo let's get started!";
-        lines[8] = "You can pick up the sample by pressing 'E' when you are close to it. To start working with material on the work benches, you can click on it when you are standing in front of it.";
+        lines[8] = "\nYou can pick up the sample by pressing 'E' when you are close to it.";
 
         SpeechBubble.StartDialoge(lines);
+    }
+
+    public void SamplePickedUp()
+    {
+        if (!pickedUpFirstTime)
+        {
+            lines = new string[2];
+            lines[0] = "\nWe start by pipetting - as we often do.";
+            lines[1] = "\nTo interact with the lab equipment simply walk up to it click on them.";
+            SpeechBubble.StartDialoge(lines);
+            pickedUpFirstTime = true;
+        }
     }
 
     /*
@@ -83,15 +98,6 @@ public class Instructor : MonoBehaviour
         SpeechBubble.StartDialoge(lines);
     }
 
-    public void SamplePickedUp()
-    {
-        lines = new string[1];
-        lines[0] = "\nGreat! Now you can start with the first step of the experiment.";
-        lines[1] = "\nTo interact with the lab equipment simply walk up to it click on them.";
-
-        SpeechBubble.StartDialoge(lines);
-    }
-
     public void IntroPipetting()
     {
         lines = new string[3];
@@ -124,7 +130,7 @@ public class Instructor : MonoBehaviour
     {
         lines = new string[4];
         lines[0] = "\nThe cell fragments and the DNA have different weights (or rather densities). We can use this to our advantage!";
-        lines[1] = "\nUsing the centirfuge, we can collect all the heavy stuff at the bottom of our tubes. Our DNA will then be at the top of the tube.";
+        lines[1] = "\nUsing the centrifuge, we can collect all the heavy stuff at the bottom of our tubes. Our DNA will then be at the top of the tube.";
         lines[2] = "But be careful when using the centrifuge...\nIf the centrifuge is not balanced, an imbalance occurs and the centrifuge can be severely damaged.";
         lines[3] = "\nOnce you have balanced the centrifuge, you can start it by pressing 'E'.";
 
@@ -193,7 +199,7 @@ public class Instructor : MonoBehaviour
     {
         lines = new string[5];
         lines[0] = "\nOur gene is now replicated.";
-        lines[1] = "\nBut on its own we cannot simply put it into our 'superhero' E. coli. I would simply be broken down.";
+        lines[1] = "\nBut on its own we cannot simply put it into our 'superhero' E. coli. It would simply be broken down.";
         lines[2] = "\nTherefore we insert the gene into a so called plasmid. This way it stays active.";
         lines[3] = "\nAlso this plasmid produces a glowing substance. This way we can later easily see if our work payed out.";
         lines[4] = "The process is surprisingly similar to the PCR you did before. But here we use other molecular mechanisms that make the two ingredients fuse together.";
@@ -279,7 +285,7 @@ public class Instructor : MonoBehaviour
     public void Outro2()
     {
         lines = new string[2];
-        lines[0] = "I heard your master thesis also went well, congradulations!\nYour next step will be your PhD phase right? Would you like to continue it in our lab?";
+        lines[0] = "I heard your master thesis also went well, congratulations!\nYour next step will be your PhD phase right? Would you like to continue it in our lab?";
         lines[1] = "No worries, you can think about it and come to my office when you have decided.";
 
         SpeechBubble.StartDialoge(lines);
